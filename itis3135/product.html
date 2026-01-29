@@ -30,6 +30,102 @@
 
   <main>
     <h2>Product</h2>
+
+    <section>
+      <h3>Jolly Dolphin Study Club Membership</h3>
+      <p>
+        A simple way to stay consistent with studying. Join the Jolly Dolphin Study Club and get weekly study sprints,
+        friendly support, and a clear plan for web projects.
+      </p>
+      <p>
+        <a href="#join">Join now</a> | <a href="#features">See features</a> | <a href="#pricing">Pricing</a>
+      </p>
+    </section>
+
+    <section id="features">
+      <h3>Features</h3>
+      <ul>
+        <li><strong>Study Sprints:</strong> 25/5 focus sessions to help you finish tasks.</li>
+        <li><strong>Debug Buddy:</strong> A simple checklist to fix code without panic.</li>
+        <li><strong>Weekly Theme:</strong> We keep projects consistent and easy to follow.</li>
+        <li><strong>Friendly Support:</strong> Ask questions and get help with explanations.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>How it works</h3>
+      <ol>
+        <li>Pick one goal for the week (example: “finish the inventory page”).</li>
+        <li>Do 2–3 study sprints during the week.</li>
+        <li>Use the Dolphin Debug checklist when you get stuck.</li>
+        <li>Share progress and get feedback.</li>
+      </ol>
+    </section>
+
+    <section id="pricing">
+      <h3>Membership Options</h3>
+
+      <article>
+        <h4>Starter (Free)</h4>
+        <ul>
+          <li>Weekly study sprint plan</li>
+          <li>Basic debugging checklist</li>
+          <li>Access to club announcements</li>
+        </ul>
+      </article>
+
+      <article>
+        <h4>Pro (Student)</h4>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Project feedback (content + structure)</li>
+          <li>Extra practice prompts</li>
+        </ul>
+      </article>
+
+      <article>
+        <h4>Team (Study Group)</h4>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Group sprint sessions</li>
+          <li>Shared project goals</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="join">
+      <h3>Join the Club</h3>
+      <p>
+        Fill this quick form and we will send you the weekly plan.
+      </p>
+
+      <form action="#" method="post">
+        <p>
+          <label for="join-name">Name:</label><br>
+          <input id="join-name" name="join-name" type="text" required>
+        </p>
+
+        <p>
+          <label for="join-email">Email:</label><br>
+          <input id="join-email" name="join-email" type="email" required>
+        </p>
+
+        <p>
+          <label for="membership">Choose a membership:</label><br>
+          <select id="membership" name="membership" required>
+            <option value="" selected disabled>Select one</option>
+            <option value="starter">Starter (Free)</option>
+            <option value="pro">Pro (Student)</option>
+            <option value="team">Team (Study Group)</option>
+          </select>
+        </p>
+
+        <p>
+          <button type="submit">Submit</button>
+        </p>
+      </form>
+    </section>
+
   </main>
 
   <footer>
@@ -45,3 +141,4 @@
 
 </body>
 </html>
+
