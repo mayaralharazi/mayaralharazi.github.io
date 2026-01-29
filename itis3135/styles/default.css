@@ -1,55 +1,81 @@
+
+
 body {
-  font-family: "Arial", Helvetica, sans-serif;
-  background-color: #e0f2fe; /* baby blue background */
-  color: #1f2937;
+  font-family: Verdana, Arial, sans-serif;
+  background-color: #e0f7ff; 
+  color: #102a43;
   margin: 0;
-  padding: 0;
 }
 
+
 header {
-  background-color: #f472b6; /* pink header */
-  color: #ffffff;
-  padding: 24px;
+  background-color: #f472b6; 
+  color: white;
+  padding: 16px 24px;
 }
+
 
 h1 {
   font-family: "Trebuchet MS", sans-serif;
+  text-align: center;
   margin: 0;
+  letter-spacing: 1px;
+}
+
+
+nav {
+  text-align: center;
+  margin-top: 10px;
 }
 
 nav a {
-  color: #fef08a; /* soft yellow links */
+  color: #fff7c2; 
   text-decoration: none;
-  margin-right: 14px;
-  font-weight: bold;
+  margin: 0 12px;
+  font-size: 0.95em;
 }
 
 nav a:hover {
-  color: #ffffff;
   text-decoration: underline;
 }
 
+
 main {
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 24px;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
+
 
 h2 {
-  color: #ec4899; /* darker pink for headings */
+  color: #db2777; 
+  text-align: center;
+  margin-top: 0;
 }
 
-p, li {
-  line-height: 1.7;
+
+p,
+li {
+  line-height: 1.8;
+  font-size: 1.05em;
 }
+
 
 footer {
-  background-color: #fef9c3; /* light yellow footer */
-  padding: 18px;
+  background-color: #fff4b0; 
+  padding: 20px;
   text-align: center;
-  font-size: 0.9em;
+  font-size: 0.85em;
 }
+
+
+footer a {
+  color: #1e3a8a;
+  margin: 0 8px;
+}
+
 
 
