@@ -2,122 +2,279 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Photography Hobby</title>
+  <title>Photography Hobby</title>
 
-<style>
+  <!-- FAVICON (we will add the real file later) -->
+  <link rel="icon" href="favicon.ico">
 
-body{
-    background-color:#f4f1de;
-    color:#2b2d42;
-    font-family: Arial, Helvetica, sans-serif;
-    margin:0;
-}
+  <style>
+    body {
+      background-color: #f4f1de;
+      color: #2b2d42;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
 
-header{
-    background:#3a86ff;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
+    header {
+      background: #3a86ff;
+      color: white;
+      text-align: center;
+      padding: 24px 16px;
+    }
 
-nav{
-    text-align:center;
-    background:#8338ec;
-    padding:10px;
-}
+    header h1 {
+      margin: 0;
+    }
 
-nav a{
-    color:white;
-    margin:10px;
-    text-decoration:none;
-    font-weight:bold;
-}
+    nav {
+      text-align: center;
+      background: #8338ec;
+      padding: 12px 10px;
+      position: sticky;
+      top: 0;
+    }
 
-main{
-    padding:20px;
-}
+    nav a {
+      color: white;
+      margin: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 10px;
+      border-radius: 8px;
+      display: inline-block;
+    }
 
-section{
-    margin-bottom:40px;
-}
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
 
-footer{
-    background:#3a86ff;
-    color:white;
-    text-align:center;
-    padding:15px;
-}
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-</style>
+    section {
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 14px;
+      padding: 18px;
+      border: 2px solid rgba(43, 45, 66, 0.15);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    footer {
+      background: #3a86ff;
+      color: white;
+      text-align: center;
+      padding: 16px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* "Single-page app" behavior */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Figure styling */
+    figure {
+      margin: 16px 0;
+      padding: 12px;
+      background: rgba(58, 134, 255, 0.08);
+      border-radius: 12px;
+      border: 1px solid rgba(58, 134, 255, 0.25);
+    }
+
+    figcaption {
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .ai-note {
+      font-style: italic;
+      margin-top: 6px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<h1>My Photography Hobby</h1>
-</header>
+  <header>
+    <h1>My Photography Hobby</h1>
+  </header>
 
-<nav>
-<a href="#">What</a> ✦
-<a href="#">Who</a> ✦
-<a href="#">When</a> ✦
-<a href="#">Where</a> ✦
-<a href="#">How</a> ✦
-<a href="#">Why</a> ✦
-<a href="#">AI Prompts</a>
-</nav>
+  <nav>
+    <a href="#what" data-page="what">What</a> ✦
+    <a href="#who" data-page="who">Who</a> ✦
+    <a href="#when" data-page="when">When</a> ✦
+    <a href="#where" data-page="where">Where</a> ✦
+    <a href="#how" data-page="how">How</a> ✦
+    <a href="#why" data-page="why">Why</a> ✦
+    <a href="#ai" data-page="ai">AI Prompts</a>
+  </nav>
 
-<main>
+  <main>
 
-<section>
-<h2>What</h2>
-<p>This page explains my hobby. I enjoy photography because it allows me to capture moments and creativity.</p>
-</section>
+    <section id="what" class="page active">
+      <h2>What</h2>
+      <p>I enjoy photography because it helps me notice details that I usually miss. I like taking pictures of places,
+        small objects, and moments that feel special.</p>
 
-<section>
-<h2>Who</h2>
-<p>This section talks about me and why I enjoy this hobby.</p>
-</section>
+      <p>My favorite style is simple and clean photos. I try to focus on lighting and the main subject instead of
+        adding too many things.</p>
 
-<section>
-<h2>When</h2>
-<p>The best time for photography is during golden hour or when lighting is interesting.</p>
-</section>
+      <figure>
+        <img src="images/sample1.jpg" alt="A sample photography image" width="600">
+        <figcaption>Sample Photo Placeholder</figcaption>
+        <p class="ai-note"><em>AI prompt used: “photorealistic photo of a camera on a desk with soft lighting, warm tones”</em></p>
+      </figure>
+    </section>
 
-<section>
-<h2>Where</h2>
-<p>I like taking photos in nature, cities, and while traveling.</p>
-</section>
+    <section id="who" class="page">
+      <h2>Who</h2>
+      <p>My name is Mayar, and I like photography as a creative break from coding and studying.</p>
 
-<section>
-<h2>How</h2>
-<p>I use a camera and editing software to improve my photos.</p>
-</section>
+      <p>I enjoy taking pictures when I travel or when I walk around campus and Charlotte.</p>
 
-<section>
-<h2>Why</h2>
-<p>Photography allows me to express creativity and preserve memories.</p>
-</section>
+      <figure>
+        <img src="images/sample2.jpg" alt="A sample portrait-style photo" width="600">
+        <figcaption>Sample Photo Placeholder</figcaption>
+        <p class="ai-note"><em>AI prompt used: “photorealistic street photo, soft background blur, natural light, calm mood”</em></p>
+      </figure>
+    </section>
 
-<section>
-<h2>AI Prompts</h2>
-<p>Images on this page were generated using AI prompts describing photorealistic photography scenes.</p>
-</section>
+    <section id="when" class="page">
+      <h2>When</h2>
+      <p>The best time for photography is usually “golden hour,” right after sunrise or before sunset.</p>
 
-</main>
+      <p>Cloudy days can also be great because the lighting is softer and shadows are not harsh.</p>
 
-<footer>
+      <figure>
+        <img src="images/sample3.jpg" alt="A sample sunset photo" width="600">
+        <figcaption>Sample Photo Placeholder</figcaption>
+        <p class="ai-note"><em>AI prompt used: “photorealistic sunset scene, warm glow, soft clouds, peaceful atmosphere”</em></p>
+      </figure>
+    </section>
 
-<p>Page created by Mayar Alharazi</p>
+    <section id="where" class="page">
+      <h2>Where</h2>
+      <p>I like taking photos in parks, on campus, and in city areas with interesting buildings.</p>
 
-<a href="https://validator.w3.org/">HTML Validation</a> |
-<a href="https://jigsaw.w3.org/css-validator/">CSS Validation</a> |
-<a href="https://wave.webaim.org/">Accessibility Check</a>
+      <p>Sometimes the best spots are simple places like a coffee shop, a walkway, or a quiet street.</p>
 
-</footer>
+      <figure>
+        <img src="images/sample4.jpg" alt="A sample city photo" width="600">
+        <figcaption>Sample Photo Placeholder</figcaption>
+        <p class="ai-note"><em>AI prompt used: “photorealistic city street photo, interesting buildings, natural lighting”</em></p>
+      </figure>
+    </section>
+
+    <section id="how" class="page">
+      <h2>How</h2>
+      <p>I start by choosing a subject, then I try different angles and distance.</p>
+
+      <p>After that, I do small edits like cropping, adjusting brightness, and making colors look natural.</p>
+
+      <figure>
+        <img src="images/sample5.jpg" alt="A sample photo editing workspace" width="600">
+        <figcaption>Sample Photo Placeholder</figcaption>
+        <p class="ai-note"><em>AI prompt used: “photorealistic laptop photo editing screen, desk setup, neat workspace”</em></p>
+      </figure>
+    </section>
+
+    <section id="why" class="page">
+      <h2>Why</h2>
+      <p>Photography helps me keep memories, especially when I travel or experience something new.</p>
+
+      <p>It also makes me feel proud when I capture a photo that looks clean and professional.</p>
+
+      <figure>
+        <img src="images/sample6.jpg" alt="A photo of a camera in hands" width="600">
+        <figcaption>Sample Photo Placeholder</figcaption>
+        <p class="ai-note"><em>AI prompt used: “photorealistic hands holding a camera, shallow depth of field, soft light”</em></p>
+      </figure>
+    </section>
+
+    <section id="ai" class="page">
+      <h2>AI Prompts</h2>
+      <p>Below are the prompts I used to generate the placeholder images for this hobby site. I will keep the images in a
+        consistent photorealistic style.</p>
+
+      <ul>
+        <li>“photorealistic photo of a camera on a desk with soft lighting, warm tones”</li>
+        <li>“photorealistic street photo, soft background blur, natural light, calm mood”</li>
+        <li>“photorealistic sunset scene, warm glow, soft clouds, peaceful atmosphere”</li>
+        <li>“photorealistic city street photo, interesting buildings, natural lighting”</li>
+        <li>“photorealistic laptop photo editing screen, desk setup, neat workspace”</li>
+        <li>“photorealistic hands holding a camera, shallow depth of field, soft light”</li>
+      </ul>
+
+      <figure>
+        <img src="images/sample7.jpg" alt="An abstract photography-themed image" width="600">
+        <figcaption>Sample Photo Placeholder</figcaption>
+        <p class="ai-note"><em>AI prompt used: “photorealistic collage of camera gear, clean layout, soft shadows”</em></p>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Page created by Mayar Alharazi</p>
+
+    <p>
+      <a href="https://validator.w3.org/" target="_blank">HTML Validation</a> |
+      <a href="https://jigsaw.w3.org/css-validator/" target="_blank">CSS Validation</a> |
+      <a href="https://wave.webaim.org/" target="_blank">Accessibility Check</a>
+    </p>
+
+    <p>
+      <a href="../mayaralharazistudio.com/" target="_blank">My Design Firm</a>
+    </p>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll("nav a[data-page]");
+    const pages = document.querySelectorAll("section.page");
+
+    function showPage(id) {
+      pages.forEach(p => p.classList.remove("active"));
+      const page = document.getElementById(id);
+      if (page) page.classList.add("active");
+    }
+
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.getAttribute("data-page");
+        showPage(id);
+        history.replaceState(null, "", "#" + id);
+      });
+    });
+
+    const start = location.hash.replace("#", "") || "what";
+    showPage(start);
+  </script>
 
 </body>
+
 </html>
