@@ -9,5 +9,49 @@
     <h2>Introduction Form</h2>
     <h3>Please submit the form below.</h3>
 
+    <form id="form">
+
+        <!-- Name Fields -->
+        <label>First Name:</label><br>
+        <input type="text" id="firstName" value="Mayar" placeholder="Enter first name" required><br><br>
+
+        <label>Middle Name (optional):</label><br>
+        <input type="text" id="middleName" placeholder="Enter middle name"><br><br>
+
+        <label>Preferred Name (optional):</label><br>
+        <input type="text" id="nickname" placeholder="Enter nickname"><br><br>
+
+        <label>Last Name:</label><br>
+        <input type="text" id="lastName" value="Alharazi" placeholder="Enter last name" required><br><br>
+
+        <!-- Mascot -->
+        <label>Mascot Adjective:</label><br>
+        <input type="text" id="adjective" value="Jolly" required><br><br>
+
+        <label>Mascot Animal:</label><br>
+        <input type="text" id="animal" value="Dolphin" required><br><br>
+
+        <!-- Divider -->
+        <label>Divider:</label><br>
+        <input type="text" id="divider" value="★" required><br><br>
+
+        <!-- Image -->
+        <label>Picture:</label><br>
+        <input type="file" id="image"><br><br>
+
+        <label>Picture Caption:</label><br>
+        <input type="text" id="caption" placeholder="Enter caption" required><br><br>
+
+        <!-- Personal Statement -->
+        <label>Personal Statement:</label><br>
+        <textarea id="statement" placeholder="Write about yourself" required></textarea><br><br>
+
+        <!-- Buttons -->
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+        <button type="button" id="clearBtn">Clear</button>
+
+    </form>
+
 </body>
 </html>
