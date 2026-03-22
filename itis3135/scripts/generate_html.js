@@ -13,7 +13,7 @@ document.getElementById("htmlBtn").addEventListener("click", function () {
 <h2>Introduction HTML</h2>
 <h3>${firstName} ${middleName} "${nickname}" ${lastName} ${divider} ${adjective} ${animal}</h3>
 <figure>
-    <img src="images/yourphoto.jpg" alt="${caption}">
+    <img src="images/IMG_8326.jpeg" alt="${caption}">
     <figcaption>${caption}</figcaption>
 </figure>
 <p>${statement}</p>
