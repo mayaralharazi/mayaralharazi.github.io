@@ -9,6 +9,14 @@ document.getElementById("jsonBtn").addEventListener("click", function () {
     const caption = document.getElementById("caption").value;
     const statement = document.getElementById("statement").value;
 
+    // NEW fields
+    const acknowledgment = document.getElementById("acknowledgment").value;
+    const ackDate = document.getElementById("ackDate").value;
+    const quote = document.getElementById("quote").value;
+    const quoteAuthor = document.getElementById("quoteAuthor").value;
+    const funnyThing = document.getElementById("funnyThing").value;
+    const share = document.getElementById("share").value;
+
     const data = {
         first_name: firstName,
         middle_name: middleName,
@@ -18,7 +26,15 @@ document.getElementById("jsonBtn").addEventListener("click", function () {
         mascot_adjective: adjective,
         mascot_animal: animal,
         image_caption: caption,
-        personal_statement: statement
+        personal_statement: statement,
+
+        // NEW data added
+        acknowledgment: acknowledgment,
+        acknowledgment_date: ackDate,
+        quote: quote,
+        quote_author: quoteAuthor,
+        funny_thing: funnyThing,
+        share: share
     };
 
     document.body.innerHTML = `
