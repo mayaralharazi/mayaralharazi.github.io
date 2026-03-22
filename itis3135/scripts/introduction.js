@@ -14,16 +14,33 @@ form.addEventListener("submit", function (e) {
     const caption = document.getElementById("caption").value;
     const statement = document.getElementById("statement").value;
 
+    // NEW fields
+    const acknowledgment = document.getElementById("acknowledgment").value;
+    const ackDate = document.getElementById("ackDate").value;
+    const quote = document.getElementById("quote").value;
+    const quoteAuthor = document.getElementById("quoteAuthor").value;
+    const funnyThing = document.getElementById("funnyThing").value;
+    const share = document.getElementById("share").value;
+
     document.body.innerHTML = `
         <h2>Introduction Form</h2>
         <h3>${firstName} ${middleName} "${nickname}" ${lastName} ${divider} ${adjective} ${animal}</h3>
 
         <figure>
-            <img src="images/yourphoto.jpg" width="200">
+            <img src="images/IMG_8326.jpeg" width="200">
             <figcaption>${caption}</figcaption>
         </figure>
 
         <p>${statement}</p>
+
+        <p><strong>Acknowledgment:</strong> ${acknowledgment}</p>
+        <p><strong>Date:</strong> ${ackDate}</p>
+
+        <p><strong>Quote:</strong> "${quote}"</p>
+        <p><strong>Author:</strong> ${quoteAuthor}</p>
+
+        <p><strong>Funny Thing:</strong> ${funnyThing}</p>
+        <p><strong>Share:</strong> ${share}</p>
 
         <br><a href="intro_form.html">Reset</a>
     `;
