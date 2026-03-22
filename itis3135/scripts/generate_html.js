@@ -9,14 +9,31 @@ document.getElementById("htmlBtn").addEventListener("click", function () {
     const caption = document.getElementById("caption").value;
     const statement = document.getElementById("statement").value;
 
+    // NEW fields
+    const ack = document.getElementById("acknowledgment").value;
+    const date = document.getElementById("ackDate").value;
+    const quote = document.getElementById("quote").value;
+    const author = document.getElementById("quoteAuthor").value;
+    const funny = document.getElementById("funnyThing").value;
+    const share = document.getElementById("share").value;
+
     const htmlCode = `
 <h2>Introduction HTML</h2>
 <h3>${firstName} ${middleName} "${nickname}" ${lastName} ${divider} ${adjective} ${animal}</h3>
+
 <figure>
     <img src="images/IMG_8326.jpeg" alt="${caption}">
     <figcaption>${caption}</figcaption>
 </figure>
+
 <p>${statement}</p>
+
+<p><strong>Acknowledgment:</strong> ${ack}</p>
+<p><strong>Date:</strong> ${date}</p>
+<p><strong>Quote:</strong> "${quote}"</p>
+<p><strong>Author:</strong> ${author}</p>
+<p><strong>Funny Thing:</strong> ${funny}</p>
+<p><strong>Share:</strong> ${share}</p>
 `;
 
     document.body.innerHTML = `
