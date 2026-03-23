@@ -175,55 +175,66 @@ function renderIntroPage(data, h2Text = "Introduction Form") {
         <a href="${escapeHtml(link.href)}" target="_blank">${escapeHtml(link.name)}</a>
     `).join(" | ");
 
-    document.body.innerHTML = `
-        <header>
-            <h1>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135</h1>
+    document.documentElement.innerHTML = `
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mayar Alharazi | Introduction</title>
+    <link rel="stylesheet" href="styles/default.css">
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+</head>
 
-            <nav>
-                <a href="index.html">Home</a> |
-                <a href="contract.html">Contract</a> |
-                <a href="website_evaluations.html">CRAP Website Evaluations</a>
-            </nav>
-        </header>
+<body>
 
-        <main>
-            <h2>${escapeHtml(h2Text)}</h2>
+<header>
+    <h1>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135</h1>
 
-            <figure>
-                <img src="${data.image}" alt="Photo of ${escapeHtml(data.first_name)}" width="300">
-                <figcaption>${escapeHtml(data.first_name)} ${escapeHtml(data.last_name)}</figcaption>
-            </figure>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="contract.html">Contract</a> |
+        <a href="website_evaluations.html">CRAP Website Evaluations</a>
+    </nav>
+</header>
 
-            <p>
-                ${escapeHtml(data.personal_statement)}
-            </p>
+<main>
+    <h2>${escapeHtml(h2Text)}</h2>
 
-            <ul>
-                <li>${escapeHtml(data.personal_background)}</li>
-                <li>${escapeHtml(data.academic_background)}</li>
-                <li>${escapeHtml(data.subject_background)}</li>
-            </ul>
+    <figure>
+        <img src="${data.image}" alt="Photo of ${escapeHtml(data.first_name)}" width="300">
+        <figcaption>${escapeHtml(data.first_name)} ${escapeHtml(data.last_name)}</figcaption>
+    </figure>
 
+    <p>${escapeHtml(data.personal_statement)}</p>
+
+    <ul>
+        <li>${escapeHtml(data.personal_background)}</li>
+        <li>${escapeHtml(data.academic_background)}</li>
+        <li>${escapeHtml(data.subject_background)}</li>
+    </ul>
+
+    <ol>
+        <li>Current Courses
             <ol>
-                <li>Current Courses
-                    <ol>
-                        ${coursesHtml}
-                    </ol>
-                </li>
+                ${coursesHtml}
             </ol>
+        </li>
+    </ol>
 
-            <blockquote>
-                “${escapeHtml(data.quote)}”
-                <cite>— ${escapeHtml(data.quote_author)}</cite>
-            </blockquote>
-        </main>
+    <blockquote>
+        “${escapeHtml(data.quote)}”
+        <cite>— ${escapeHtml(data.quote_author)}</cite>
+    </blockquote>
+</main>
 
-        <footer>
-            ${linksHtml}
-            <br><br>
-            <a href="intro_form.html">Reset</a>
-        </footer>
-    `;
+<footer>
+    ${linksHtml}
+    <br><br>
+    <a href="intro_form.html">Reset</a>
+</footer>
+
+</body>
+</html>
+`;
 }
 
 window.buildFormData = buildFormData;
