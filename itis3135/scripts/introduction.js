@@ -8,7 +8,6 @@ const clearBtn = document.getElementById("clearBtn");
 const defaultImagePath = "images/IMG_8326.jpeg";
 let uploadedImageData = "";
 
-// Default course data
 const defaultCourses = [
     {
         department: "ITIS",
@@ -118,7 +117,7 @@ function getLinksData() {
 }
 
 function escapeHtml(text) {
-    return text
+    return String(text)
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
@@ -168,68 +167,71 @@ function buildDisplayName(data) {
 }
 
 function renderIntroPage(data, h2Text = "Introduction Form") {
+    const shortBullets = [
+        data.personal_background,
+        data.academic_background,
+        data.subject_background
+    ].filter(Boolean);
+
+    const shortBulletsHtml = shortBullets.map(item => `
+        <li>${escapeHtml(item)}</li>
+    `).join("");
+
     const coursesHtml = data.courses.map(course => `
-        <li>
-            <strong>${escapeHtml(course.department)} ${escapeHtml(course.number)} - ${escapeHtml(course.name)}:</strong>
-            ${escapeHtml(course.reason)}
-        </li>
+        <li>${escapeHtml(course.department)} ${escapeHtml(course.number)}</li>
     `).join("");
 
     const linksHtml = data.links.map(link => `
-        <li><a href="${escapeHtml(link.href)}" target="_blank">${escapeHtml(link.name)}</a></li>
-    `).join("");
-
-    const funnyThingHtml = data.funny_thing
-        ? `<li><strong>Funny Thing:</strong> ${escapeHtml(data.funny_thing)}</li>`
-        : "";
-
-    const shareHtml = data.share
-        ? `<li><strong>Something I Would Like to Share:</strong> ${escapeHtml(data.share)}</li>`
-        : "";
+        <a href="${escapeHtml(link.href)}" target="_blank">${escapeHtml(link.name)}</a>
+    `).join(" | ");
 
     document.body.innerHTML = `
-        <h2>${escapeHtml(h2Text)}</h2>
-        <h3>${escapeHtml(buildDisplayName(data))}</h3>
+        <header>
+            <h1>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135</h1>
+        </header>
 
-        <figure>
-            <img src="${data.image}" alt="${escapeHtml(data.image_caption)}" width="250">
-            <figcaption>${escapeHtml(data.image_caption)}</figcaption>
-        </figure>
+        <main>
+            <h2>${escapeHtml(h2Text)}</h2>
 
-        <ul>
-            <li><strong>Personal Background:</strong> ${escapeHtml(data.personal_background)}</li>
-            <li><strong>Professional Background:</strong> ${escapeHtml(data.professional_background)}</li>
-            <li><strong>Academic Background:</strong> ${escapeHtml(data.academic_background)}</li>
-            <li><strong>Subject Background:</strong> ${escapeHtml(data.subject_background)}</li>
-            <li><strong>Primary Computer:</strong> ${escapeHtml(data.primary_computer)}</li>
-            <li><strong>Personal Statement:</strong> ${escapeHtml(data.personal_statement)}</li>
-            ${funnyThingHtml}
-            ${shareHtml}
-            <li><strong>Courses I'm Taking:</strong>
-                <ul>
-                    ${coursesHtml}
-                </ul>
-            </li>
-            <li><strong>Favorite Quote:</strong> "${escapeHtml(data.quote)}" - ${escapeHtml(data.quote_author)}</li>
-            <li><strong>Acknowledgment:</strong> ${escapeHtml(data.acknowledgment)}</li>
-            <li><strong>Acknowledgement Date:</strong> ${escapeHtml(data.acknowledgment_date)}</li>
-            <li><strong>Links:</strong>
-                <ul>
-                    ${linksHtml}
-                </ul>
-            </li>
-        </ul>
+            <figure>
+                <img src="${data.image}" alt="Photo of ${escapeHtml(data.first_name)} ${escapeHtml(data.last_name)}" width="300">
+                <figcaption>${escapeHtml(data.first_name)} ${escapeHtml(data.last_name)}</figcaption>
+            </figure>
 
-        <p><a href="intro_form.html">Reset</a></p>
+            <p>
+                ${escapeHtml(data.personal_statement)}
+            </p>
+
+            <ul>
+                ${shortBulletsHtml}
+            </ul>
+
+            <ol>
+                <li>Current Courses
+                    <ol>
+                        ${coursesHtml}
+                    </ol>
+                </li>
+            </ol>
+
+            <blockquote>
+                “${escapeHtml(data.quote)}”
+                <cite>— ${escapeHtml(data.quote_author)}</cite>
+            </blockquote>
+        </main>
+
+        <footer>
+            ${linksHtml}
+            <br><br>
+            <a href="intro_form.html">Reset</a>
+        </footer>
     `;
 }
 
-// expose helpers for other JS files
 window.buildFormData = buildFormData;
 window.buildDisplayName = buildDisplayName;
 window.escapeHtml = escapeHtml;
 
-// image preview
 imageInput.addEventListener("change", function () {
     const file = imageInput.files[0];
 
@@ -247,19 +249,16 @@ imageInput.addEventListener("change", function () {
     reader.readAsDataURL(file);
 });
 
-// add course
 addCourseBtn.addEventListener("click", function () {
     createCourseBlock();
 });
 
-// submit
 form.addEventListener("submit", function (e) {
     e.preventDefault();
     const data = buildFormData();
     renderIntroPage(data, "Introduction Form");
 });
 
-// clear
 clearBtn.addEventListener("click", function () {
     document.querySelectorAll("form input[type='text'], form input[type='url'], form input[type='date'], form textarea").forEach(field => {
         field.value = "";
@@ -271,7 +270,6 @@ clearBtn.addEventListener("click", function () {
     coursesContainer.innerHTML = "";
 });
 
-// reset
 form.addEventListener("reset", function () {
     setTimeout(() => {
         uploadedImageData = "";
@@ -280,5 +278,4 @@ form.addEventListener("reset", function () {
     }, 0);
 });
 
-// initialize
 loadDefaultCourses();
