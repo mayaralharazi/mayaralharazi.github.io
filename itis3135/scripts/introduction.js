@@ -265,7 +265,7 @@ addCourseBtn.addEventListener("click", function () {
 form.addEventListener("submit", function (e) {
     e.preventDefault();
     const data = buildFormData();
-    renderIntroPage(data, "Introduction Form");
+    renderIntroPage(data, "Introduction");
 });
 
 clearBtn.addEventListener("click", function () {
