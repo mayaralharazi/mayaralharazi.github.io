@@ -167,16 +167,6 @@ function buildDisplayName(data) {
 }
 
 function renderIntroPage(data, h2Text = "Introduction Form") {
-    const shortBullets = [
-        data.personal_background,
-        data.academic_background,
-        data.subject_background
-    ].filter(Boolean);
-
-    const shortBulletsHtml = shortBullets.map(item => `
-        <li>${escapeHtml(item)}</li>
-    `).join("");
-
     const coursesHtml = data.courses.map(course => `
         <li>${escapeHtml(course.department)} ${escapeHtml(course.number)}</li>
     `).join("");
@@ -188,13 +178,19 @@ function renderIntroPage(data, h2Text = "Introduction Form") {
     document.body.innerHTML = `
         <header>
             <h1>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135</h1>
+
+            <nav>
+                <a href="index.html">Home</a> |
+                <a href="contract.html">Contract</a> |
+                <a href="website_evaluations.html">CRAP Website Evaluations</a>
+            </nav>
         </header>
 
         <main>
             <h2>${escapeHtml(h2Text)}</h2>
 
             <figure>
-                <img src="${data.image}" alt="Photo of ${escapeHtml(data.first_name)} ${escapeHtml(data.last_name)}" width="300">
+                <img src="${data.image}" alt="Photo of ${escapeHtml(data.first_name)}" width="300">
                 <figcaption>${escapeHtml(data.first_name)} ${escapeHtml(data.last_name)}</figcaption>
             </figure>
 
@@ -203,7 +199,9 @@ function renderIntroPage(data, h2Text = "Introduction Form") {
             </p>
 
             <ul>
-                ${shortBulletsHtml}
+                <li>${escapeHtml(data.personal_background)}</li>
+                <li>${escapeHtml(data.academic_background)}</li>
+                <li>${escapeHtml(data.subject_background)}</li>
             </ul>
 
             <ol>
