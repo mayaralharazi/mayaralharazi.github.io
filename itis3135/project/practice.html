@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeStart | Practice</title>
 
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../styles/default.css">
+
+  <!-- Simple JS -->
+  <script>
+    function showAnswer() {
+      document.getElementById("answer").style.display = "block";
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>CodeStart</h1>
+    <p>A Beginner Guide to JavaScript and CSS</p>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="about.html">About</a> |
+      <a href="lessons.html">Lessons</a> |
+      <a href="practice.html">Practice</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <section>
+      <h2>Practice Activities</h2>
+      <p>
+        Try these simple exercises to test your understanding of JavaScript and CSS.
+      </p>
+    </section>
+
+    <!-- Quiz Section -->
+    <section>
+      <h2>Quick Quiz</h2>
+
+      <p><strong>Question:</strong> What is JavaScript mainly used for?</p>
+
+      <ul>
+        <li>A) Styling pages</li>
+        <li>B) Making pages interactive</li>
+        <li>C) Creating images</li>
+      </ul>
+
+      <button onclick="showAnswer()">Show Answer</button>
+
+      <p id="answer" style="display:none;">
+        ✔ Correct Answer: B) Making pages interactive
+      </p>
+    </section>
+
+    <!-- Practice Task -->
+    <section>
+      <h2>Mini Exercise</h2>
+      <p>
+        Write a JavaScript function that prints "Hello World" in the console.
+      </p>
+    </section>
+
+    <!-- Image -->
+    <section>
+      <h2>Keep Practicing</h2>
+      <img src="../images/IMG_8326.jpeg" alt="Practice coding" width="400">
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 CodeStart | Designed by Mayar Alharazi</p>
+  </footer>
+
+</body>
+</html>
