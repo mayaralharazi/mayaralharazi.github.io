@@ -271,7 +271,7 @@ form.addEventListener("submit", function (e) {
     }
 
     const data = buildFormData();
-    renderIntroPage(data, "Introduction");
+    renderIntroPage(data, "Introduction Form");
 });
 
 clearBtn.addEventListener("click", function () {
