@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ Introduction Form</title>
 
   <link rel="stylesheet" href="styles/default.css">
@@ -11,116 +10,124 @@
 </head>
 
 <body>
+  <div data-include="components/header.html"></div>
 
-<div data-include="components/header.html"></div>
+  <main>
+    <h2 id="pageTitle">Introduction Form</h2>
+    <h3>Please submit the form below.</h3>
 
-<main>
-  <h2 id="pageTitle">Introduction Form</h2>
-  <h3>Please submit the form below.</h3>
+    <form id="form">
+      <p>TEST NEW VERSION</p>
 
-  <form id="form">
+      <label for="firstName">First Name:</label><br>
+      <input type="text" id="firstName" value="Mayar" required><br><br>
 
-    <label>First Name:</label><br>
-    <input type="text" id="firstName" value="Mayar" required><br><br>
+      <label for="middleName">Middle Name (or Initial) (optional):</label><br>
+      <input type="text" id="middleName" value="Abdulkarim"><br><br>
 
-    <label>Middle Name:</label><br>
-    <input type="text" id="middleName" value="Abdulkarim"><br><br>
+      <label for="nickname">Nickname/Preferred Name (optional):</label><br>
+      <input type="text" id="nickname" value="Mero"><br><br>
 
-    <label>Preferred Name:</label><br>
-    <input type="text" id="nickname" value="Mero"><br><br>
+      <label for="lastName">Last Name:</label><br>
+      <input type="text" id="lastName" value="Alharazi" required><br><br>
 
-    <label>Last Name:</label><br>
-    <input type="text" id="lastName" value="Alharazi" required><br><br>
+      <label for="acknowledgment">Acknowledgment Statement:</label><br>
+      <input type="text" id="acknowledgment" value="I understand that this is my own work." required><br><br>
 
-    <label>Acknowledgment:</label><br>
-    <input type="text" id="acknowledgment" value="I understand that this is my own work." required><br><br>
+      <label for="ackDate">Acknowledgement Date:</label><br>
+      <input type="date" id="ackDate" value="2026-03-22" required><br><br>
 
-    <label>Date:</label><br>
-    <input type="date" id="ackDate" value="2026-03-22" required><br><br>
+      <label for="adjective">Mascot Adjective:</label><br>
+      <input type="text" id="adjective" value="Jolly" required><br><br>
 
-    <label>Mascot Adjective:</label><br>
-    <input type="text" id="adjective" value="Jolly" required><br><br>
+      <label for="animal">Mascot Animal:</label><br>
+      <input type="text" id="animal" value="Dolphin" required><br><br>
 
-    <label>Mascot Animal:</label><br>
-    <input type="text" id="animal" value="Dolphin" required><br><br>
+      <label for="divider">Divider:</label><br>
+      <input type="text" id="divider" value="★" required><br><br>
 
-    <label>Divider:</label><br>
-    <input type="text" id="divider" value="★" required><br><br>
+      <label for="image">Picture:</label><br>
+      <input type="file" id="image" accept="image/*"><br><br>
 
-    <label>Picture:</label><br>
-    <input type="file" id="image"><br><br>
+      <img id="imagePreview" src="images/IMG_8326.jpeg" alt="Preview image" width="200"><br><br>
 
-    <img id="imagePreview" src="images/IMG_8326.jpeg" width="200"><br><br>
+      <label for="caption">Picture Caption:</label><br>
+      <input type="text" id="caption" value="Me in Disney" required><br><br>
 
-    <label>Caption:</label><br>
-    <input type="text" id="caption" value="Me in Disney"><br><br>
+      <label for="statement">Personal Statement:</label><br>
+      <textarea id="statement" required>I am a Computer Science student at UNC Charlotte.</textarea><br><br>
 
-    <label>Personal Statement:</label><br>
-    <textarea id="statement">I am a Computer Science student at UNC Charlotte.</textarea><br><br>
+      <label for="personalBackground">Personal Background:</label><br>
+      <textarea id="personalBackground" required>From Saudi Arabia studying in the US.</textarea><br><br>
 
-    <label>Personal Background:</label><br>
-    <textarea id="personalBackground">From Saudi Arabia studying in the US.</textarea><br><br>
+      <label for="professionalBackground">Professional Background:</label><br>
+      <textarea id="professionalBackground" required>Building skills through coursework.</textarea><br><br>
 
-    <label>Professional Background:</label><br>
-    <textarea id="professionalBackground">Building skills through coursework.</textarea><br><br>
+      <label for="academicBackground">Academic Background:</label><br>
+      <textarea id="academicBackground" required>Computer Science major.</textarea><br><br>
 
-    <label>Academic Background:</label><br>
-    <textarea id="academicBackground">Computer Science major.</textarea><br><br>
+      <label for="subjectBackground">Subject Background:</label><br>
+      <textarea id="subjectBackground" required>Learning programming and web development.</textarea><br><br>
 
-    <label>Subject Background:</label><br>
-    <textarea id="subjectBackground">Learning programming and web development.</textarea><br><br>
+      <label for="primaryComputer">Primary Computer:</label><br>
+      <textarea id="primaryComputer" required>MacBook</textarea><br><br>
 
-    <label>Primary Computer:</label><br>
-    <textarea id="primaryComputer">MacBook</textarea><br><br>
+      <label for="funnyThing">Funny Thing (optional):</label><br>
+      <textarea id="funnyThing">I debug for hours and miss a semicolon.</textarea><br><br>
 
-    <label>Funny Thing:</label><br>
-    <textarea id="funnyThing">I debug for hours and miss a semicolon.</textarea><br><br>
+      <label for="share">Something I Would Like to Share (optional):</label><br>
+      <textarea id="share">I want to improve in cybersecurity.</textarea><br><br>
 
-    <label>Something to Share:</label><br>
-    <textarea id="share">I want to improve in cybersecurity.</textarea><br><br>
+      <h3>Courses</h3>
+      <div id="coursesContainer"></div>
+      <button type="button" id="addCourseBtn">Add Course</button><br><br>
 
-    <h3>Courses</h3>
-    <div id="coursesContainer"></div>
-    <button type="button" id="addCourseBtn">Add Course</button><br><br>
+      <label for="quote">Quote:</label><br>
+      <input type="text" id="quote" value="Stay consistent" required><br><br>
 
-    <label>Quote:</label><br>
-    <input type="text" id="quote" value="Stay consistent"><br><br>
+      <label for="quoteAuthor">Quote Author:</label><br>
+      <input type="text" id="quoteAuthor" value="Unknown" required><br><br>
 
-    <label>Author:</label><br>
-    <input type="text" id="quoteAuthor" value="Unknown"><br><br>
+      <h3>Links</h3>
 
-    <h3>Links</h3>
+      <label for="link1Name">Link 1 Name:</label><br>
+      <input type="text" id="link1Name" value="GitHub" required><br>
+      <label for="link1Url">Link 1 URL:</label><br>
+      <input type="url" id="link1Url" value="https://github.com/mayaralharazi" required><br><br>
 
-    <input type="text" id="link1Name" value="GitHub">
-    <input type="url" id="link1Url" value="https://github.com"><br><br>
+      <label for="link2Name">Link 2 Name:</label><br>
+      <input type="text" id="link2Name" value="GitHub Pages" required><br>
+      <label for="link2Url">Link 2 URL:</label><br>
+      <input type="url" id="link2Url" value="https://mayaralharazi.github.io/" required><br><br>
 
-    <input type="text" id="link2Name" value="GitHub Pages">
-    <input type="url" id="link2Url" value="https://github.io"><br><br>
+      <label for="link3Name">Link 3 Name:</label><br>
+      <input type="text" id="link3Name" value="freeCodeCamp" required><br>
+      <label for="link3Url">Link 3 URL:</label><br>
+      <input type="url" id="link3Url" value="https://www.freecodecamp.org/mayaralharazi" required><br><br>
 
-    <input type="text" id="link3Name" value="freeCodeCamp">
-    <input type="url" id="link3Url" value="https://freecodecamp.org"><br><br>
+      <label for="link4Name">Link 4 Name:</label><br>
+      <input type="text" id="link4Name" value="Codecademy" required><br>
+      <label for="link4Url">Link 4 URL:</label><br>
+      <input type="url" id="link4Url" value="https://www.codecademy.com/" required><br><br>
 
-    <input type="text" id="link4Name" value="Codecademy">
-    <input type="url" id="link4Url" value="https://codecademy.com"><br><br>
+      <label for="link5Name">Link 5 Name:</label><br>
+      <input type="text" id="link5Name" value="LinkedIn" required><br>
+      <label for="link5Url">Link 5 URL:</label><br>
+      <input type="url" id="link5Url" value="http://www.linkedin.com/in/mayar-alharazi-64a385241" required><br><br>
 
-    <input type="text" id="link5Name" value="LinkedIn">
-    <input type="url" id="link5Url" value="https://linkedin.com"><br><br>
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+      <button type="button" id="clearBtn">Clear</button>
+      <button type="button" id="jsonBtn">Generate JSON</button>
+      <button type="button" id="htmlBtn">Generate HTML</button>
+    </form>
+  </main>
 
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
-    <button type="button" id="clearBtn">Clear</button>
-    <button type="button" id="jsonBtn">Generate JSON</button>
-    <button type="button" id="htmlBtn">Generate HTML</button>
+  <div data-include="components/footer.html"></div>
 
-  </form>
-</main>
-
-<div data-include="components/footer.html"></div>
-
-<script src="scripts/HTMLInclude.min.js"></script>
-<script src="scripts/introduction.js"></script>
-<script src="scripts/generate_json.js"></script>
-<script src="scripts/generate_html.js"></script>
-
+  <script src="scripts/HTMLInclude.min.js"></script>
+  <script src="scripts/introduction.js"></script>
+  <script src="scripts/generate_json.js"></script>
+  <script src="scripts/generate_html.js"></script>
 </body>
 </html>
