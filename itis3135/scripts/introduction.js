@@ -35,22 +35,31 @@ const defaultCourses = [
     }
 ];
 
+function escapeHtml(text) {
+    return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+}
+
 function createCourseBlock(course = { department: "", number: "", name: "", reason: "" }) {
     const wrapper = document.createElement("div");
     wrapper.className = "course-block";
 
     wrapper.innerHTML = `
         <label>Department:</label><br>
-        <input type="text" class="course-department" value="${course.department}" placeholder="e.g. ITIS" required><br><br>
+        <input type="text" class="course-department" value="${escapeHtml(course.department)}" placeholder="e.g. ITIS" required><br><br>
 
         <label>Number:</label><br>
-        <input type="text" class="course-number" value="${course.number}" placeholder="e.g. 3135" required><br><br>
+        <input type="text" class="course-number" value="${escapeHtml(course.number)}" placeholder="e.g. 3135" required><br><br>
 
         <label>Name:</label><br>
-        <input type="text" class="course-name" value="${course.name}" placeholder="Course name" required><br><br>
+        <input type="text" class="course-name" value="${escapeHtml(course.name)}" placeholder="Course name" required><br><br>
 
         <label>Reason:</label><br>
-        <textarea class="course-reason" placeholder="Why are you taking this course?" required>${course.reason}</textarea><br><br>
+        <textarea class="course-reason" placeholder="Why are you taking this course?" required>${escapeHtml(course.reason)}</textarea><br><br>
 
         <button type="button" class="remove-course-btn">Delete Course</button>
         <hr>
@@ -65,26 +74,21 @@ function createCourseBlock(course = { department: "", number: "", name: "", reas
 
 function loadDefaultCourses() {
     coursesContainer.innerHTML = "";
-    defaultCourses.forEach(course => createCourseBlock(course));
+    defaultCourses.forEach((course) => createCourseBlock(course));
 }
 
 function getCoursesData() {
     const courseBlocks = document.querySelectorAll(".course-block");
     const courses = [];
 
-    courseBlocks.forEach(block => {
+    courseBlocks.forEach((block) => {
         const department = block.querySelector(".course-department").value.trim();
         const number = block.querySelector(".course-number").value.trim();
         const name = block.querySelector(".course-name").value.trim();
         const reason = block.querySelector(".course-reason").value.trim();
 
         if (department || number || name || reason) {
-            courses.push({
-                department,
-                number,
-                name,
-                reason
-            });
+            courses.push({ department, number, name, reason });
         }
     });
 
@@ -116,15 +120,6 @@ function getLinksData() {
     ];
 }
 
-function escapeHtml(text) {
-    return String(text)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#39;");
-}
-
 function getImageSrc() {
     return uploadedImageData || defaultImagePath;
 }
@@ -143,7 +138,6 @@ function buildFormData() {
         image: getImageSrc(),
         image_caption: document.getElementById("caption").value.trim(),
         personal_statement: document.getElementById("statement").value.trim(),
-
         personal_background: document.getElementById("personalBackground").value.trim(),
         professional_background: document.getElementById("professionalBackground").value.trim(),
         academic_background: document.getElementById("academicBackground").value.trim(),
@@ -151,10 +145,8 @@ function buildFormData() {
         primary_computer: document.getElementById("primaryComputer").value.trim(),
         funny_thing: document.getElementById("funnyThing").value.trim(),
         share: document.getElementById("share").value.trim(),
-
         quote: document.getElementById("quote").value.trim(),
         quote_author: document.getElementById("quoteAuthor").value.trim(),
-
         courses: getCoursesData(),
         links: getLinksData()
     };
@@ -166,80 +158,89 @@ function buildDisplayName(data) {
     return `${data.first_name}${middle}${preferred} ${data.last_name} ${data.divider} ${data.mascot_adjective} ${data.mascot_animal}`;
 }
 
-function renderIntroPage(data, h2Text = "Introduction Form") {
-    const coursesHtml = data.courses.map(course => `
-        <li>${escapeHtml(course.department)} ${escapeHtml(course.number)}</li>
+function renderIntroPage(data, h2Text = "Introduction") {
+    const nameLine = buildDisplayName(data);
+
+    const coursesHtml = data.courses.map((course) => `
+        <li>
+            <strong>${escapeHtml(course.department)} ${escapeHtml(course.number)}: ${escapeHtml(course.name)}</strong>
+            ${course.reason ? ` - ${escapeHtml(course.reason)}` : ""}
+        </li>
     `).join("");
 
-    const linksHtml = data.links.map(link => `
-        <a href="${escapeHtml(link.href)}" target="_blank">${escapeHtml(link.name)}</a>
-    `).join(" | ");
+    const linksHtml = data.links.map((link) => `
+        <li><a href="${escapeHtml(link.href)}" target="_blank">${escapeHtml(link.name)}</a></li>
+    `).join("");
 
-    document.documentElement.innerHTML = `
+    const html = `
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mayar Alharazi | Introduction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ ${escapeHtml(h2Text)}</title>
     <link rel="stylesheet" href="styles/default.css">
     <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 
-<header>
-    <h1>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135</h1>
-
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="contract.html">Contract</a> |
-        <a href="website_evaluations.html">CRAP Website Evaluations</a>
-    </nav>
-</header>
+<div data-include="components/header.html"></div>
 
 <main>
     <h2>${escapeHtml(h2Text)}</h2>
 
+    <h3>${escapeHtml(nameLine)}</h3>
+
     <figure>
-        <img src="${data.image}" alt="Photo of ${escapeHtml(data.first_name)}" width="300">
-        <figcaption>${escapeHtml(data.first_name)} ${escapeHtml(data.last_name)}</figcaption>
+        <img src="${escapeHtml(data.image)}" alt="Photo of ${escapeHtml(data.first_name)} ${escapeHtml(data.last_name)}" width="300">
+        <figcaption>${escapeHtml(data.image_caption)}</figcaption>
     </figure>
 
     <p>${escapeHtml(data.personal_statement)}</p>
 
     <ul>
-        <li>${escapeHtml(data.personal_background)}</li>
-        <li>${escapeHtml(data.academic_background)}</li>
-        <li>${escapeHtml(data.subject_background)}</li>
+        <li><strong>Personal Background:</strong> ${escapeHtml(data.personal_background)}</li>
+        <li><strong>Professional Background:</strong> ${escapeHtml(data.professional_background)}</li>
+        <li><strong>Academic Background:</strong> ${escapeHtml(data.academic_background)}</li>
+        <li><strong>Subject Background:</strong> ${escapeHtml(data.subject_background)}</li>
+        <li><strong>Primary Computer:</strong> ${escapeHtml(data.primary_computer)}</li>
+        <li><strong>Funny Thing:</strong> ${escapeHtml(data.funny_thing)}</li>
+        <li><strong>Something I Would Like to Share:</strong> ${escapeHtml(data.share)}</li>
     </ul>
 
-    <ol>
-        <li>Current Courses
-            <ol>
-                ${coursesHtml}
-            </ol>
-        </li>
-    </ol>
+    <h3>Courses</h3>
+    <ul>
+        ${coursesHtml}
+    </ul>
 
     <blockquote>
-        “${escapeHtml(data.quote)}”
-        <cite>— ${escapeHtml(data.quote_author)}</cite>
+        "${escapeHtml(data.quote)}"
+        <cite> - ${escapeHtml(data.quote_author)}</cite>
     </blockquote>
+
+    <h3>Links</h3>
+    <ul>
+        ${linksHtml}
+    </ul>
+
+    <p><a href="intro_form.html">Reset</a></p>
 </main>
 
-<footer>
-    ${linksHtml}
-    <br><br>
-    <a href="intro_form.html">Reset</a>
-</footer>
+<div data-include="components/footer.html"></div>
 
+<script src="scripts/HTMLInclude.min.js"></script>
 </body>
-</html>
-`;
+</html>`;
+
+    document.open();
+    document.write(html);
+    document.close();
 }
 
 window.buildFormData = buildFormData;
 window.buildDisplayName = buildDisplayName;
 window.escapeHtml = escapeHtml;
+window.renderIntroPage = renderIntroPage;
 
 imageInput.addEventListener("change", function () {
     const file = imageInput.files[0];
@@ -264,12 +265,17 @@ addCourseBtn.addEventListener("click", function () {
 
 form.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    if (!form.reportValidity()) {
+        return;
+    }
+
     const data = buildFormData();
     renderIntroPage(data, "Introduction");
 });
 
 clearBtn.addEventListener("click", function () {
-    document.querySelectorAll("form input[type='text'], form input[type='url'], form input[type='date'], form textarea").forEach(field => {
+    document.querySelectorAll("form input[type='text'], form input[type='url'], form input[type='date'], form textarea").forEach((field) => {
         field.value = "";
     });
 
