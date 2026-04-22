@@ -5,25 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CodeStart | Practice</title>
 
-  <!-- External CSS -->
   <link rel="stylesheet" href="../styles/default.css">
-
-  <!-- Simple JS -->
-  <script>
-    function showAnswer() {
-      document.getElementById("answer").style.display = "block";
-    }
-  </script>
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header>
     <h1>CodeStart</h1>
     <p>A Beginner Guide to JavaScript and CSS</p>
 
-    <!-- Navigation -->
     <nav>
       <a href="index.html">Home</a> |
       <a href="about.html">About</a> |
@@ -33,55 +23,81 @@
     </nav>
   </header>
 
-  <!-- MAIN -->
   <main>
 
     <section>
-      <h2>Practice Activities</h2>
+      <h2>Practice Your Skills</h2>
       <p>
-        Try these simple exercises to test your understanding of JavaScript and CSS.
+        Test your understanding of beginner JavaScript and CSS concepts with this short quiz.
+        Choose the best answer for each question, then check your score.
       </p>
     </section>
 
-    <!-- Quiz Section -->
-    <section>
+    <section class="quiz-box">
       <h2>Quick Quiz</h2>
 
-      <p><strong>Question:</strong> What is JavaScript mainly used for?</p>
+      <div class="quiz-question">
+        <h3>1. Which language is used to make a website interactive?</h3>
+        <label><input type="radio" name="q1" value="a"> HTML</label><br>
+        <label><input type="radio" name="q1" value="b"> CSS</label><br>
+        <label><input type="radio" name="q1" value="c"> JavaScript</label>
+      </div>
 
-      <ul>
-        <li>A) Styling pages</li>
-        <li>B) Making pages interactive</li>
-        <li>C) Creating images</li>
-      </ul>
+      <div class="quiz-question">
+        <h3>2. Which CSS property changes the background color?</h3>
+        <label><input type="radio" name="q2" value="a"> font-size</label><br>
+        <label><input type="radio" name="q2" value="b"> background-color</label><br>
+        <label><input type="radio" name="q2" value="c"> text-align</label>
+      </div>
 
-      <button onclick="showAnswer()">Show Answer</button>
+      <div class="quiz-question">
+        <h3>3. What is a function in JavaScript used for?</h3>
+        <label><input type="radio" name="q3" value="a"> Styling text</label><br>
+        <label><input type="radio" name="q3" value="b"> Reusing code</label><br>
+        <label><input type="radio" name="q3" value="c"> Adding images</label>
+      </div>
 
-      <p id="answer" style="display:none;">
-        ✔ Correct Answer: B) Making pages interactive
-      </p>
+      <button id="checkAnswersBtn">Check Answers</button>
+      <p id="quizResult"></p>
     </section>
 
-    <!-- Practice Task -->
-    <section>
+    <section class="practice-task">
       <h2>Mini Exercise</h2>
       <p>
-        Write a JavaScript function that prints "Hello World" in the console.
+        Try writing a JavaScript function that prints <strong>Hello World</strong> in the console.
       </p>
+
+      <pre>
+function sayHello() {
+  console.log("Hello World");
+}
+
+sayHello();
+      </pre>
+
+      <div class="lesson-tip">
+        <h3>Practice Tip</h3>
+        <p>
+          Repeating small exercises like this helps beginners build confidence and remember key ideas more easily.
+        </p>
+      </div>
     </section>
 
-    <!-- Image -->
     <section>
       <h2>Keep Practicing</h2>
-      <img src="../images/practice.jpg" alt="Practice coding exercises" width="400">
+      <p>
+        Practice is one of the best ways to become more comfortable with coding.
+        The more examples you try, the more natural JavaScript and CSS will feel.
+      </p>
+      <img src="../images/practice.jpg" alt="Practice coding exercises">
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 CodeStart | Designed by Mayar Alharazi</p>
   </footer>
 
+  <script src="scripts/practice.js"></script>
 </body>
 </html>
