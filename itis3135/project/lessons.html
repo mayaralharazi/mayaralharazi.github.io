@@ -34,7 +34,10 @@
     </section>
 
     <section>
-      <h2>Filter Lessons</h2>
+      <h2>Browse Lessons by Topic</h2>
+      <p>
+        Use the buttons below to explore different lesson categories and focus on the topic you want to study.
+      </p>
       <div class="filter-buttons">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="javascript">JavaScript</button>
@@ -44,45 +47,102 @@
 
     <section class="lesson-card" data-category="javascript">
       <h2>JavaScript Basics</h2>
+      <p>
+        JavaScript is the programming language that makes websites interactive.
+        It can respond to clicks, change content, and create a more dynamic user experience.
+      </p>
 
       <h3>Variables</h3>
-      <p>Variables are used to store data in JavaScript.</p>
+      <p>
+        Variables are used to store information that can be used later in a program.
+      </p>
       <pre>
 let name = "Mayar";
+let level = "Beginner";
       </pre>
 
       <h3>Functions</h3>
-      <p>Functions allow you to reuse code.</p>
+      <p>
+        Functions let you group code together so you can reuse it when needed.
+      </p>
       <pre>
-function greet() {
-  console.log("Hello!");
+function greetUser() {
+  console.log("Welcome to CodeStart!");
 }
+
+greetUser();
       </pre>
 
       <h3>Events</h3>
-      <p>JavaScript can respond to user actions like clicks.</p>
+      <p>
+        JavaScript can respond to user actions such as clicking a button, hovering over an item, or submitting a form.
+      </p>
+      <pre>
+document.querySelector("button").addEventListener("click", function () {
+  alert("Button clicked!");
+});
+      </pre>
+
+      <div class="lesson-tip">
+        <h3>Why It Matters</h3>
+        <p>
+          JavaScript brings websites to life by allowing pages to react to users and update content without being static.
+        </p>
+      </div>
     </section>
 
     <section class="lesson-card" data-category="css">
       <h2>CSS Basics</h2>
+      <p>
+        CSS is used to style the appearance of a website. It controls colors, spacing, fonts, and layout.
+      </p>
 
       <h3>Colors</h3>
-      <p>CSS is used to style web pages.</p>
+      <p>
+        CSS allows you to set background colors, text colors, and borders to improve design and readability.
+      </p>
       <pre>
 body {
   background-color: lightblue;
+  color: #1e3a8a;
 }
       </pre>
 
       <h3>Text Styling</h3>
-      <p>You can change fonts, sizes, and colors.</p>
+      <p>
+        You can style text by changing the font, size, alignment, and weight to make a page easier to read.
+      </p>
+      <pre>
+h1 {
+  font-size: 2em;
+  text-align: center;
+}
+      </pre>
 
       <h3>Layout</h3>
-      <p>CSS helps control layout using flexbox or grid.</p>
+      <p>
+        CSS helps organize content using layout tools such as flexbox and grid to create neat and structured pages.
+      </p>
+      <pre>
+.container {
+  display: flex;
+  gap: 20px;
+}
+      </pre>
+
+      <div class="lesson-tip">
+        <h3>Why It Matters</h3>
+        <p>
+          CSS improves the user experience by making a website visually clear, attractive, and easier to navigate.
+        </p>
+      </div>
     </section>
 
     <section>
       <h2>Learning in Action</h2>
+      <p>
+        Both JavaScript and CSS work together to create websites that are useful, interactive, and visually appealing.
+      </p>
       <img src="../images/lessons.jpg" alt="JavaScript and CSS lessons" width="400">
     </section>
 
