@@ -173,6 +173,7 @@ footer a {
 section img {
   display: block;
   margin: 20px auto;
-  max-width: 100%;
+  max-width: 500px;
+  width: 100%;
   border-radius: 10px;
 }
