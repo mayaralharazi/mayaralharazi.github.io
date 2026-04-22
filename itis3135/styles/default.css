@@ -77,5 +77,16 @@ footer a {
   margin: 0 8px;
 }
 
+.swiper {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.swiper-slide img {
+  width: 100%;
+  border-radius: 10px;
+}
+
 
 
