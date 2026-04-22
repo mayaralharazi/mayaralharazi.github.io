@@ -177,3 +177,49 @@ section img {
   width: 100%;
   border-radius: 10px;
 }
+.quiz-box {
+  background-color: #fffafb;
+  border: 2px solid #f2c6da;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.quiz-question {
+  margin-bottom: 20px;
+}
+
+.quiz-question h3 {
+  margin-bottom: 10px;
+}
+
+#checkAnswersBtn {
+  background-color: #e26aa8;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+#checkAnswersBtn:hover {
+  background-color: #c94f90;
+}
+
+#quizResult {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.practice-task {
+  margin-bottom: 30px;
+}
+
+.practice-task pre {
+  background-color: #f4f4f4;
+  padding: 12px;
+  border-left: 4px solid #e26aa8;
+  overflow-x: auto;
+  border-radius: 6px;
+}
