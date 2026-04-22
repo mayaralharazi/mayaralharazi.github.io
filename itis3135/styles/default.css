@@ -80,13 +80,19 @@ footer a {
 .swiper {
   width: 100%;
   max-width: 600px;
+  height: 350px; /* fixed height */
   margin: 20px auto;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .swiper-slide img {
   width: 100%;
+  height: 100%;
+  object-fit: cover; /* THIS FIXES EVERYTHING */
   border-radius: 10px;
 }
-
-
-
