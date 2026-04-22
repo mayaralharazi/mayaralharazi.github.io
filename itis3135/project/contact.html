@@ -5,18 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CodeStart | Contact</title>
 
-  <!-- External CSS -->
   <link rel="stylesheet" href="../styles/default.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header>
     <h1>CodeStart</h1>
     <p>A Beginner Guide to JavaScript and CSS</p>
 
-    <!-- Navigation -->
     <nav>
       <a href="index.html">Home</a> |
       <a href="about.html">About</a> |
@@ -26,7 +23,6 @@
     </nav>
   </header>
 
-  <!-- MAIN -->
   <main>
 
     <section>
@@ -36,36 +32,39 @@
       </p>
     </section>
 
-    <!-- Contact Form -->
-    <section>
-      <form>
+    <section class="contact-box">
+      <form id="contactForm" novalidate>
 
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
+        <input type="text" id="name" name="name"><br><br>
 
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+        <input type="email" id="email" name="email"><br><br>
 
         <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="5" required></textarea><br><br>
+        <textarea id="message" name="message" rows="5"></textarea><br><br>
 
-        <button type="submit">Send Message</button>
-
+        <button type="submit" id="sendBtn">Send Message</button>
       </form>
+
+      <p id="formMessage"></p>
     </section>
 
-    <!-- Image -->
     <section>
       <h2>We’re Here to Help</h2>
-      <img src="../images/contact.jpg" alt="Contact support" width="400">
+      <p>
+        CodeStart is designed to support beginners as they learn the basics of JavaScript and CSS.
+        Reach out if you need guidance, clarification, or extra practice.
+      </p>
+      <img src="../images/contact.jpg" alt="Contact support">
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 CodeStart | Designed by Mayar Alharazi</p>
   </footer>
 
+  <script src="scripts/contact.js"></script>
 </body>
 </html>
