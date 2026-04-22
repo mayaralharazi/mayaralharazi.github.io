@@ -5,18 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CodeStart | Lessons</title>
 
-  <!-- External CSS -->
   <link rel="stylesheet" href="../styles/default.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header>
     <h1>CodeStart</h1>
     <p>A Beginner Guide to JavaScript and CSS</p>
 
-    <!-- Navigation -->
     <nav>
       <a href="index.html">Home</a> |
       <a href="about.html">About</a> |
@@ -26,7 +23,6 @@
     </nav>
   </header>
 
-  <!-- MAIN -->
   <main>
 
     <section>
@@ -37,8 +33,16 @@
       </p>
     </section>
 
-    <!-- JavaScript Section -->
     <section>
+      <h2>Filter Lessons</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="javascript">JavaScript</button>
+        <button class="filter-btn" data-filter="css">CSS</button>
+      </div>
+    </section>
+
+    <section class="lesson-card" data-category="javascript">
       <h2>JavaScript Basics</h2>
 
       <h3>Variables</h3>
@@ -59,8 +63,7 @@ function greet() {
       <p>JavaScript can respond to user actions like clicks.</p>
     </section>
 
-    <!-- CSS Section -->
-    <section>
+    <section class="lesson-card" data-category="css">
       <h2>CSS Basics</h2>
 
       <h3>Colors</h3>
@@ -78,7 +81,6 @@ body {
       <p>CSS helps control layout using flexbox or grid.</p>
     </section>
 
-    <!-- Image -->
     <section>
       <h2>Learning in Action</h2>
       <img src="../images/lessons.jpg" alt="JavaScript and CSS lessons" width="400">
@@ -86,10 +88,10 @@ body {
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 CodeStart | Designed by Mayar Alharazi</p>
   </footer>
 
+  <script src="scripts/lessons.js"></script>
 </body>
 </html>
