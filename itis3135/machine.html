@@ -163,13 +163,13 @@ function playSound(key) {
   display.textContent = audio.parentElement.id;
 }
 
-document.querySelectorAll(".drum-pad").forEach(pad => {
-  pad.addEventListener("click", () => {
+document.querySelectorAll(".drum-pad").forEach(function(pad) {
+  pad.addEventListener("click", function() {
     playSound(pad.textContent.trim());
   });
 });
 
-document.addEventListener("keydown", e => {
+document.addEventListener("keydown", function(e) {
   playSound(e.key);
 });
 </script>
