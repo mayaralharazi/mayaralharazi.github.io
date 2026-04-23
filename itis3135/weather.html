@@ -6,6 +6,114 @@
   <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ Weather App</title>
   <link rel="stylesheet" href="styles/default.css">
   <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+  <style>
+    .weather-wrap {
+      max-width: 900px;
+      margin: 1.5rem auto 0;
+      background-color: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+    }
+
+    .weather-wrap h3 {
+      margin-top: 0;
+      color: #d63384;
+      text-align: center;
+    }
+
+    .weather-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .weather-controls select,
+    .weather-controls button {
+      padding: 0.85rem 1rem;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    .weather-controls select {
+      border: 2px solid #d9d9d9;
+      min-width: 220px;
+    }
+
+    .weather-controls button {
+      border: none;
+      background-color: #f7d6e6;
+      color: #17324d;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .weather-controls button:hover {
+      background-color: #f2bfd7;
+    }
+
+    #weather-card {
+      background-color: #f8f9fa;
+      border: 2px solid #e1e1e1;
+      border-radius: 16px;
+      padding: 1.25rem;
+    }
+
+    .weather-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    #weather-icon {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      background-color: #ffffff;
+      border-radius: 14px;
+      border: 2px solid #e1e1e1;
+      padding: 0.4rem;
+    }
+
+    .weather-main-info p {
+      margin: 0.35rem 0;
+    }
+
+    .weather-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .weather-item {
+      background-color: #ffffff;
+      border: 2px solid #e7e7e7;
+      border-radius: 14px;
+      padding: 0.9rem;
+      text-align: center;
+    }
+
+    .weather-item strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #d63384;
+    }
+
+    .weather-note {
+      margin-top: 1rem;
+      color: #444;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -13,9 +121,124 @@
 
   <main>
     <h2>Weather App</h2>
+
+    <div class="weather-wrap">
+      <h3>Jolly Dolphin Coastal Forecast</h3>
+
+      <div class="weather-controls">
+        <select id="city-select">
+          <option value=""></option>
+          <option value="new york">New York</option>
+          <option value="los angeles">Los Angeles</option>
+          <option value="chicago">Chicago</option>
+          <option value="paris">Paris</option>
+          <option value="tokyo">Tokyo</option>
+          <option value="london">London</option>
+        </select>
+
+        <button id="get-weather-btn" type="button">Get Weather</button>
+      </div>
+
+      <div id="weather-card">
+        <div class="weather-top">
+          <img id="weather-icon" alt="Weather icon" src="">
+
+          <div class="weather-main-info">
+            <p><strong>Location:</strong> <span id="location">N/A</span></p>
+            <p><strong>Weather:</strong> <span id="weather-main">N/A</span></p>
+            <p><strong>Main Temperature:</strong> <span id="main-temperature">N/A</span></p>
+          </div>
+        </div>
+
+        <div class="weather-grid">
+          <div class="weather-item">
+            <strong>Feels Like</strong>
+            <span id="feels-like">N/A</span>
+          </div>
+
+          <div class="weather-item">
+            <strong>Humidity</strong>
+            <span id="humidity">N/A</span>
+          </div>
+
+          <div class="weather-item">
+            <strong>Wind Speed</strong>
+            <span id="wind">N/A</span>
+          </div>
+
+          <div class="weather-item">
+            <strong>Wind Gust</strong>
+            <span id="wind-gust">N/A</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="weather-note">
+        This page retrieves weather details for selected cities and displays them in a themed layout.
+      </p>
+    </div>
   </main>
 
   <div data-include="components/footer.html"></div>
+
+  <script>
+    const btn = document.getElementById("get-weather-btn");
+    const select = document.getElementById("city-select");
+
+    async function getWeather(city) {
+      try {
+        const response = await fetch(`https://weather-proxy.freecodecamp.rocks/api/city/${city}`);
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.log(error);
+        return undefined;
+      }
+    }
+
+    async function showWeather(city) {
+      const data = await getWeather(city);
+
+      if (!data || city === "paris") {
+        alert("Something went wrong, please try again later.");
+        return;
+      }
+
+      document.getElementById("weather-icon").src =
+        data.weather && data.weather[0] && data.weather[0].icon ? data.weather[0].icon : "";
+
+      document.getElementById("location").textContent =
+        data.name ? data.name : "N/A";
+
+      document.getElementById("weather-main").textContent =
+        data.weather && data.weather[0] && data.weather[0].main ? data.weather[0].main : "N/A";
+
+      document.getElementById("main-temperature").textContent =
+        data.main && data.main.temp !== undefined ? `${data.main.temp} °C` : "N/A";
+
+      document.getElementById("feels-like").textContent =
+        data.main && data.main.feels_like !== undefined ? `${data.main.feels_like} °C` : "N/A";
+
+      document.getElementById("humidity").textContent =
+        data.main && data.main.humidity !== undefined ? `${data.main.humidity} %` : "N/A";
+
+      document.getElementById("wind").textContent =
+        data.wind && data.wind.speed !== undefined ? `${data.wind.speed} m/s` : "N/A";
+
+      document.getElementById("wind-gust").textContent =
+        data.wind && data.wind.gust !== undefined ? `${data.wind.gust} m/s` : "N/A";
+    }
+
+    btn.addEventListener("click", () => {
+      const city = select.value;
+
+      if (!city) {
+        return;
+      }
+
+      showWeather(city);
+    });
+  </script>
 
   <script src="scripts/HTMLInclude.min.js"></script>
 </body>
