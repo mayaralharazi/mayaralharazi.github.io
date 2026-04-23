@@ -6,6 +6,98 @@
   <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ Drum Machine</title>
   <link rel="stylesheet" href="styles/default.css">
   <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+  <style>
+    .drum-machine-wrap {
+      max-width: 900px;
+      margin: 1.5rem auto 0;
+      background-color: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+    }
+
+    .drum-intro {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .drum-intro p {
+      margin: 0.5rem 0 0;
+    }
+
+    #drum-machine {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    #pad-bank {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+    }
+
+    .drum-pad {
+      min-height: 90px;
+      border: none;
+      border-radius: 16px;
+      background-color: #f7d6e6;
+      color: #17324d;
+      font-size: 1.4rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.08s ease, background-color 0.2s ease;
+    }
+
+    .drum-pad:hover {
+      background-color: #f2bfd7;
+    }
+
+    .drum-pad:active,
+    .drum-pad.active-pad {
+      transform: scale(0.97);
+      background-color: #e78ab8;
+      color: #ffffff;
+    }
+
+    .drum-display-box {
+      background-color: #f8f9fa;
+      border: 2px solid #e3e3e3;
+      border-radius: 16px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .drum-display-box h3 {
+      margin-top: 0;
+      color: #d63384;
+    }
+
+    #display {
+      min-height: 48px;
+      margin: 0;
+      padding: 0.9rem;
+      border-radius: 12px;
+      background-color: #ffffff;
+      border: 2px solid #d9d9d9;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .drum-note {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    @media (max-width: 700px) {
+      #drum-machine {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -13,9 +105,108 @@
 
   <main>
     <h2>Drum Machine</h2>
+
+    <div class="drum-machine-wrap">
+      <div class="drum-intro">
+        <h3>Jolly Dolphin Beat Board</h3>
+        <p>Click a pad or use your keyboard keys Q, W, E, A, S, D, Z, X, and C.</p>
+      </div>
+
+      <div id="drum-machine">
+        <div id="pad-bank">
+          <button class="drum-pad" id="Heater 1" type="button">
+            Q
+            <audio class="clip" id="Q" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-1.mp3"></audio>
+          </button>
+
+          <button class="drum-pad" id="Heater 2" type="button">
+            W
+            <audio class="clip" id="W" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-2.mp3"></audio>
+          </button>
+
+          <button class="drum-pad" id="Heater 3" type="button">
+            E
+            <audio class="clip" id="E" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-3.mp3"></audio>
+          </button>
+
+          <button class="drum-pad" id="Heater 4" type="button">
+            A
+            <audio class="clip" id="A" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-4_1.mp3"></audio>
+          </button>
+
+          <button class="drum-pad" id="Clap" type="button">
+            S
+            <audio class="clip" id="S" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-6.mp3"></audio>
+          </button>
+
+          <button class="drum-pad" id="Open-HH" type="button">
+            D
+            <audio class="clip" id="D" src="https://cdn.freecodecamp.org/curriculum/drum/Dsc_Oh.mp3"></audio>
+          </button>
+
+          <button class="drum-pad" id="Kick-n'-Hat" type="button">
+            Z
+            <audio class="clip" id="Z" src="https://cdn.freecodecamp.org/curriculum/drum/Kick_n_Hat.mp3"></audio>
+          </button>
+
+          <button class="drum-pad" id="Kick" type="button">
+            X
+            <audio class="clip" id="X" src="https://cdn.freecodecamp.org/curriculum/drum/RP4_KICK_1.mp3"></audio>
+          </button>
+
+          <button class="drum-pad" id="Closed-HH" type="button">
+            C
+            <audio class="clip" id="C" src="https://cdn.freecodecamp.org/curriculum/drum/Cev_H2.mp3"></audio>
+          </button>
+        </div>
+
+        <div class="drum-display-box">
+          <h3>Now Playing</h3>
+          <p id="display">Press a pad</p>
+          <p class="drum-note">This page follows the FCC drum machine project and fits the Jolly Dolphin theme.</p>
+        </div>
+      </div>
+    </div>
   </main>
 
   <div data-include="components/footer.html"></div>
+
+  <script>
+    const display = document.getElementById("display");
+    const drumPads = document.querySelectorAll(".drum-pad");
+
+    function playSound(key) {
+      const upperKey = key.toUpperCase();
+      const audio = document.getElementById(upperKey);
+
+      if (!audio) {
+        return;
+      }
+
+      const pad = audio.parentElement;
+
+      audio.currentTime = 0;
+      audio.play();
+
+      display.innerText = pad.id;
+
+      pad.classList.add("active-pad");
+      setTimeout(() => {
+        pad.classList.remove("active-pad");
+      }, 120);
+    }
+
+    drumPads.forEach((pad) => {
+      pad.addEventListener("click", () => {
+        const key = pad.textContent.trim();
+        playSound(key);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      playSound(event.key);
+    });
+  </script>
 
   <script src="scripts/HTMLInclude.min.js"></script>
 </body>
