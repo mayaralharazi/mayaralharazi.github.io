@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Overview | Mayar Alharazi</title>
     <link rel="stylesheet" href="styles/default.css">
     <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
@@ -54,6 +55,14 @@
     </section>
 
     <section>
+        <h3>Live Project</h3>
+        <p>
+            You can view the live CodeStart website here:
+            <a href="project/index.html" target="_blank">Open CodeStart Project</a>
+        </p>
+    </section>
+
+    <section>
         <h3>Client Information</h3>
         <ul>
             <li><strong>Name:</strong> [Private]</li>
@@ -94,19 +103,19 @@
         <ul>
             <li><strong>Purpose of the Page:</strong> To introduce the website and explain its main purpose.</li>
             <li><strong>Audience/Users of Page:</strong> All visitors, especially beginner learners.</li>
-            <li><strong>Content of the Page:</strong> Welcome message, short description, and navigation links to the main sections of the website.</li>
+            <li><strong>Content of the Page:</strong> Welcome message, short description, slideshow, and navigation links to the main sections of the website.</li>
             <li><strong>Is user data entered on this page?</strong> No.</li>
             <li><strong>Validation Needed:</strong> No validation is needed because users do not enter data on this page.</li>
-            <li><strong>Buttons, Hyperlinks, or Drop Downs:</strong> Navigation links and a button to start learning.</li>
-            <li><strong>Actions on the Page:</strong> Users can navigate to other pages and begin exploring the lessons.</li>
-            <li><strong>Special Notes:</strong> This page will serve as the main entry point and should have a clear and welcoming design.</li>
+            <li><strong>Buttons, Hyperlinks, or Drop Downs:</strong> Navigation links, slideshow controls, and project links.</li>
+            <li><strong>Actions on the Page:</strong> Users can navigate to other pages and view the slideshow images.</li>
+            <li><strong>Special Notes:</strong> This page serves as the main entry point and includes an interactive slideshow.</li>
         </ul>
 
         <h4>2. About Page</h4>
         <ul>
             <li><strong>Purpose of the Page:</strong> To explain the website, its goals, and who it is for.</li>
             <li><strong>Audience/Users of Page:</strong> Visitors who want more background information about the website.</li>
-            <li><strong>Content of the Page:</strong> Information about the project idea, target audience, and learning goals.</li>
+            <li><strong>Content of the Page:</strong> Information about the project idea, target audience, learning goals, and why coding is useful.</li>
             <li><strong>Is user data entered on this page?</strong> No.</li>
             <li><strong>Validation Needed:</strong> No validation is needed because users do not enter data on this page.</li>
             <li><strong>Buttons, Hyperlinks, or Drop Downs:</strong> Navigation links.</li>
@@ -121,21 +130,21 @@
             <li><strong>Content of the Page:</strong> Topic explanations, short examples, beginner notes, and organized lesson sections.</li>
             <li><strong>Is user data entered on this page?</strong> No.</li>
             <li><strong>Validation Needed:</strong> No validation is needed because users do not enter data on this page.</li>
-            <li><strong>Buttons, Hyperlinks, or Drop Downs:</strong> Tabs, buttons, and navigation links.</li>
-            <li><strong>Actions on the Page:</strong> Users can click tabs or buttons to switch between JavaScript and CSS topics.</li>
-            <li><strong>Special Notes:</strong> This page will use a jQuery UI widget to organize content clearly for beginners.</li>
+            <li><strong>Buttons, Hyperlinks, or Drop Downs:</strong> Filter buttons and navigation links.</li>
+            <li><strong>Actions on the Page:</strong> Users can click buttons to switch between all lessons, JavaScript topics, and CSS topics.</li>
+            <li><strong>Special Notes:</strong> This page includes JavaScript filtering to organize lesson content clearly for beginners.</li>
         </ul>
 
         <h4>4. Practice Page</h4>
         <ul>
             <li><strong>Purpose of the Page:</strong> To help users practice what they learned through interactive examples and simple activities.</li>
             <li><strong>Audience/Users of Page:</strong> Students using the lessons and wanting extra practice.</li>
-            <li><strong>Content of the Page:</strong> Mini quiz, examples, interactive buttons, and coding practice prompts.</li>
+            <li><strong>Content of the Page:</strong> Mini quiz, examples, feedback, and coding practice prompts.</li>
             <li><strong>Is user data entered on this page?</strong> Yes.</li>
-            <li><strong>Validation Needed:</strong> Yes, quiz or input fields will need basic validation to check if users answered or completed required items.</li>
-            <li><strong>Buttons, Hyperlinks, or Drop Downs:</strong> Buttons, possible drop downs, and links.</li>
-            <li><strong>Actions on the Page:</strong> Users can answer questions, click to reveal examples, and load content dynamically.</li>
-            <li><strong>Special Notes:</strong> This page will include JavaScript interactivity and AJAX functionality.</li>
+            <li><strong>Validation Needed:</strong> Yes, quiz questions should be answered before the score is shown.</li>
+            <li><strong>Buttons, Hyperlinks, or Drop Downs:</strong> Quiz button and navigation links.</li>
+            <li><strong>Actions on the Page:</strong> Users can answer quiz questions and receive score feedback dynamically.</li>
+            <li><strong>Special Notes:</strong> This page includes interactive JavaScript quiz functionality.</li>
         </ul>
 
         <h4>5. Contact Page</h4>
@@ -154,22 +163,23 @@
     <section>
         <h3>Dynamic Functionality on the Website</h3>
         <p>
-            The website will include dynamic functionality using JavaScript, jQuery, jQuery UI, and AJAX in order to
-            make the website more interactive and useful for beginner learners.
+            The website includes dynamic functionality using JavaScript to make the learning experience more interactive
+            and helpful for beginner users.
         </p>
 
         <ul>
-            <li><strong>Lessons Page:</strong> This page will use a jQuery UI tabs widget so users can switch between JavaScript and CSS topics in a clean and organized way. This makes the lessons easier to follow.</li>
-            <li><strong>Practice Page:</strong> This page will include JavaScript-based interactivity such as a mini quiz, show/hide answers, and buttons that display feedback after user interaction.</li>
-            <li><strong>Practice Page:</strong> AJAX functionality will be used to load example content or practice material dynamically without refreshing the entire page.</li>
-            <li><strong>Contact Page:</strong> JavaScript form validation will check that the required fields are completed and that the email is in the correct format before submission.</li>
+            <li><strong>Home Page:</strong> A Swiper slideshow displays multiple images related to coding and learning.</li>
+            <li><strong>Lessons Page:</strong> JavaScript filter buttons allow users to view all lessons or only JavaScript or CSS topics.</li>
+            <li><strong>Practice Page:</strong> An interactive quiz lets users answer questions and receive a score instantly.</li>
+            <li><strong>Contact Page:</strong> JavaScript form validation checks that all required fields are completed and that the email is in a valid format before submission.</li>
+            <li><strong>All Project Pages:</strong> A scroll-to-top button improves navigation and usability.</li>
         </ul>
 
         <p><strong>Example URLs of websites with similar interactivity:</strong></p>
         <ul>
             <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a></li>
             <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
-            <li><a href="https://jqueryui.com/tabs/" target="_blank">jQuery UI Tabs Example</a></li>
+            <li><a href="https://swiperjs.com/" target="_blank">Swiper.js</a></li>
         </ul>
     </section>
 
@@ -178,7 +188,7 @@
         <p>
             This project overview page was created by Mayar Alharazi for ITIS 3135. The project is based on a beginner
             learning website idea for a real client. References and planning tools used for this assignment include
-            Draw.io, W3Schools, MDN Web Docs, and jQuery UI examples.
+            Draw.io, W3Schools, MDN Web Docs, and Swiper.js.
         </p>
         <p><strong>Date and Time:</strong> 04/05/2026 2:00 pm</p>
     </section>
