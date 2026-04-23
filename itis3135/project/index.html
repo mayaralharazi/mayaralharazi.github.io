@@ -5,21 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CodeStart | Home</title>
 
-  <!-- Main CSS -->
   <link rel="stylesheet" href="../styles/default.css">
-
-  <!-- Swiper CSS (for slideshow) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header>
     <h1>CodeStart</h1>
     <p>A Beginner Guide to JavaScript and CSS</p>
 
-    <!-- Navigation Bar -->
     <nav>
       <a href="index.html">Home</a> |
       <a href="about.html">About</a> |
@@ -29,19 +24,19 @@
     </nav>
   </header>
 
-  <!-- MAIN CONTENT -->
   <main>
 
-    <!-- Hero Section -->
     <section>
       <h2>Welcome to CodeStart</h2>
       <p>
-        CodeStart is a beginner-friendly website designed to help students learn
-        the basics of JavaScript and CSS. Our goal is to make coding simple,
-        clear, and fun for everyone.
+        CodeStart is a beginner-friendly website designed to help students learn the basics of JavaScript and CSS in a simple and organized way.
+        The goal of this site is to make coding feel less overwhelming and more approachable for beginners.
+      </p>
+      <p>
+        This website combines clear explanations, lesson pages, practice activities, and interactive features to support students as they build
+        confidence in web development.
       </p>
 
-      <!-- SLIDESHOW -->
       <div class="swiper">
         <div class="swiper-wrapper">
 
@@ -59,72 +54,69 @@
 
         </div>
 
-        <!-- navigation arrows -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-
-        <!-- dots -->
         <div class="swiper-pagination"></div>
       </div>
-
     </section>
 
-    <!-- Features Section -->
-    <section>
+    <section class="info-card">
       <h2>What You Will Learn</h2>
-
       <ul>
-        <li>Basic JavaScript concepts</li>
-        <li>CSS styling and layout</li>
-        <li>Hands-on practice activities</li>
-        <li>Real examples for beginners</li>
+        <li>Basic JavaScript concepts such as variables, functions, and events</li>
+        <li>CSS topics including colors, text styling, and layout</li>
+        <li>How web pages become interactive and visually organized</li>
+        <li>How to practice coding ideas through examples and small activities</li>
       </ul>
     </section>
 
-    <!-- Navigation Cards Section -->
-    <section>
+    <section class="info-card">
+      <h2>Why CodeStart Is Helpful</h2>
+      <p>
+        Many beginners feel confused when they first start coding. CodeStart breaks lessons into smaller topics so users can learn step by step.
+        This makes the learning process feel clearer and more manageable.
+      </p>
+    </section>
+
+    <section class="info-card">
       <h2>Explore the Website</h2>
 
-      <div>
+      <div class="feature-box">
         <h3>About</h3>
-        <p>Learn more about the purpose of CodeStart.</p>
-        <a href="about.html">Go to About →</a>
+        <p>Learn more about the purpose, mission, and audience of CodeStart.</p>
+        <a href="about.html">Go to About</a>
       </div>
 
-      <div>
+      <div class="feature-box">
         <h3>Lessons</h3>
-        <p>Start learning JavaScript and CSS basics.</p>
-        <a href="lessons.html">View Lessons →</a>
+        <p>Read beginner lessons on JavaScript and CSS and browse topics by category.</p>
+        <a href="lessons.html">View Lessons</a>
       </div>
 
-      <div>
+      <div class="feature-box">
         <h3>Practice</h3>
-        <p>Test your knowledge with simple exercises.</p>
-        <a href="practice.html">Start Practice →</a>
+        <p>Test your knowledge with a short quiz and simple coding exercises.</p>
+        <a href="practice.html">Start Practice</a>
       </div>
 
-      <div>
+      <div class="feature-box">
         <h3>Contact</h3>
-        <p>Need help? Reach out to us.</p>
-        <a href="contact.html">Contact Us →</a>
+        <p>Reach out for help, questions, or support while learning.</p>
+        <a href="contact.html">Contact Us</a>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 CodeStart | Designed by Mayar Alharazi</p>
   </footer>
 
-  <!-- Swiper JS -->
+  <button id="topBtn" title="Go to top">↑</button>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- Your JS -->
   <script src="scripts/index.js"></script>
-
-<button id="topBtn" title="Go to top">↑</button>
-<script src="scripts/top.js"></script>
+  <script src="scripts/top.js"></script>
 
 </body>
 </html>
