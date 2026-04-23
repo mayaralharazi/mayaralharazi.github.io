@@ -6,6 +6,69 @@
   <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ Markdown to HTML Converter</title>
   <link rel="stylesheet" href="styles/default.css">
   <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+  <style>
+    .converter-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .converter-box {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    .converter-box h3 {
+      margin-top: 0;
+      color: #d63384;
+    }
+
+    #markdown-input {
+      width: 100%;
+      min-height: 220px;
+      padding: 1rem;
+      border: 2px solid #d9d9d9;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+
+    #html-output {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background-color: #f8f9fa;
+      border: 2px solid #d9d9d9;
+      border-radius: 12px;
+      padding: 1rem;
+      min-height: 180px;
+    }
+
+    #preview {
+      background-color: #f8f9fa;
+      border: 2px solid #d9d9d9;
+      border-radius: 12px;
+      padding: 1rem;
+      min-height: 180px;
+    }
+
+    #preview img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    #preview blockquote {
+      margin: 0.75rem 0;
+      padding-left: 1rem;
+      border-left: 4px solid #d63384;
+      color: #333;
+    }
+  </style>
 </head>
 
 <body>
@@ -13,9 +76,79 @@
 
   <main>
     <h2>Markdown to HTML Converter</h2>
+
+    <div class="converter-wrap">
+      <section class="converter-box">
+        <h3>Markdown Input</h3>
+        <textarea id="markdown-input" placeholder="# Jolly Dolphin Notes&#10;## Club Update&#10;### Study Session&#10;**Bold text**&#10;*Italic text*&#10;![dolphin](https://picsum.photos/300/180)&#10;[Club Link](https://www.freecodecamp.org)&#10;> Keep swimming and studying"></textarea>
+      </section>
+
+      <section class="converter-box">
+        <h3>Raw HTML Output</h3>
+        <div id="html-output"></div>
+      </section>
+
+      <section class="converter-box">
+        <h3>HTML Preview</h3>
+        <div id="preview"></div>
+      </section>
+    </div>
   </main>
 
   <div data-include="components/footer.html"></div>
+
+  <script>
+    const markdownInput = document.getElementById("markdown-input");
+    const htmlOutput = document.getElementById("html-output");
+    const preview = document.getElementById("preview");
+
+    function inlineMarkdown(text) {
+      return text
+        .replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '<img alt="$1" src="$2">')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/__(.*?)__/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/_(.*?)_/g, '<em>$1</em>');
+    }
+
+    function convertMarkdown() {
+      const input = markdownInput.value;
+      const lines = input.split("\n");
+
+      const html = lines.map((line) => {
+        if (/^\s*###\s+/.test(line)) {
+          return `<h3>${inlineMarkdown(line.replace(/^\s*###\s+/, ""))}</h3>`;
+        }
+
+        if (/^\s*##\s+/.test(line)) {
+          return `<h2>${inlineMarkdown(line.replace(/^\s*##\s+/, ""))}</h2>`;
+        }
+
+        if (/^\s*#\s+/.test(line)) {
+          return `<h1>${inlineMarkdown(line.replace(/^\s*#\s+/, ""))}</h1>`;
+        }
+
+        if (/^\s*>\s+/.test(line)) {
+          return `<blockquote>${inlineMarkdown(line.replace(/^\s*>\s+/, ""))}</blockquote>`;
+        }
+
+        return inlineMarkdown(line);
+      }).join("");
+
+      return html;
+    }
+
+    markdownInput.addEventListener("input", function () {
+      const converted = convertMarkdown();
+      htmlOutput.textContent = converted;
+      preview.innerHTML = converted;
+    });
+
+    window.addEventListener("load", function () {
+      markdownInput.dispatchEvent(new Event("input"));
+    });
+  </script>
 
   <script src="scripts/HTMLInclude.min.js"></script>
 </body>
