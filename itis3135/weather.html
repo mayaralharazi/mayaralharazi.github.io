@@ -6,6 +6,7 @@
   <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ Weather App</title>
   <link rel="stylesheet" href="styles/default.css">
   <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+
   <style>
     .weather-wrap {
       max-width: 900px;
@@ -87,8 +88,8 @@
     }
 
     .weather-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 0.9rem;
       margin-top: 1rem;
     }
@@ -99,6 +100,7 @@
       border-radius: 14px;
       padding: 0.9rem;
       text-align: center;
+      flex: 1 1 180px;
     }
 
     .weather-item strong {
@@ -109,7 +111,7 @@
 
     .weather-note {
       margin-top: 1rem;
-      color: #444;
+      color: #444444;
       font-size: 0.95rem;
       text-align: center;
     }
@@ -127,7 +129,7 @@
 
       <div class="weather-controls">
         <select id="city-select">
-          <option value=""></option>
+          <option value="">Select a city</option>
           <option value="new york">New York</option>
           <option value="los angeles">Los Angeles</option>
           <option value="chicago">Chicago</option>
@@ -141,7 +143,7 @@
 
       <div id="weather-card">
         <div class="weather-top">
-          <img id="weather-icon" alt="Weather icon" src="">
+          <img id="weather-icon" alt="Weather icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" />
 
           <div class="weather-main-info">
             <p><strong>Location:</strong> <span id="location">N/A</span></p>
@@ -182,55 +184,69 @@
   <div data-include="components/footer.html"></div>
 
   <script>
-    const btn = document.getElementById("get-weather-btn");
-    const select = document.getElementById("city-select");
+    var btn = document.getElementById("get-weather-btn");
+    var select = document.getElementById("city-select");
 
-    async function getWeather(city) {
-      try {
-        const response = await fetch(`https://weather-proxy.freecodecamp.rocks/api/city/${city}`);
-        const data = await response.json();
-        return data;
-      } catch (error) {
-        console.log(error);
-        return undefined;
-      }
+    function getWeather(city) {
+      return fetch("https://weather-proxy.freecodecamp.rocks/api/city/" + city)
+        .then(function(response) {
+          return response.json();
+        })
+        .catch(function(error) {
+          console.log(error);
+          return undefined;
+        });
     }
 
-    async function showWeather(city) {
-      const data = await getWeather(city);
+    function showWeather(city) {
+      getWeather(city).then(function(data) {
+        if (!data || city === "paris") {
+          alert("Something went wrong, please try again later.");
+          return;
+        }
 
-      if (!data || city === "paris") {
-        alert("Something went wrong, please try again later.");
-        return;
-      }
+        document.getElementById("weather-icon").src =
+          data.weather && data.weather[0] && data.weather[0].icon
+            ? data.weather[0].icon
+            : "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 
-      document.getElementById("weather-icon").src =
-        data.weather && data.weather[0] && data.weather[0].icon ? data.weather[0].icon : "";
+        document.getElementById("location").textContent =
+          data.name ? data.name : "N/A";
 
-      document.getElementById("location").textContent =
-        data.name ? data.name : "N/A";
+        document.getElementById("weather-main").textContent =
+          data.weather && data.weather[0] && data.weather[0].main
+            ? data.weather[0].main
+            : "N/A";
 
-      document.getElementById("weather-main").textContent =
-        data.weather && data.weather[0] && data.weather[0].main ? data.weather[0].main : "N/A";
+        document.getElementById("main-temperature").textContent =
+          data.main && data.main.temp !== undefined
+            ? data.main.temp + " °C"
+            : "N/A";
 
-      document.getElementById("main-temperature").textContent =
-        data.main && data.main.temp !== undefined ? `${data.main.temp} °C` : "N/A";
+        document.getElementById("feels-like").textContent =
+          data.main && data.main.feels_like !== undefined
+            ? data.main.feels_like + " °C"
+            : "N/A";
 
-      document.getElementById("feels-like").textContent =
-        data.main && data.main.feels_like !== undefined ? `${data.main.feels_like} °C` : "N/A";
+        document.getElementById("humidity").textContent =
+          data.main && data.main.humidity !== undefined
+            ? data.main.humidity + " %"
+            : "N/A";
 
-      document.getElementById("humidity").textContent =
-        data.main && data.main.humidity !== undefined ? `${data.main.humidity} %` : "N/A";
+        document.getElementById("wind").textContent =
+          data.wind && data.wind.speed !== undefined
+            ? data.wind.speed + " m/s"
+            : "N/A";
 
-      document.getElementById("wind").textContent =
-        data.wind && data.wind.speed !== undefined ? `${data.wind.speed} m/s` : "N/A";
-
-      document.getElementById("wind-gust").textContent =
-        data.wind && data.wind.gust !== undefined ? `${data.wind.gust} m/s` : "N/A";
+        document.getElementById("wind-gust").textContent =
+          data.wind && data.wind.gust !== undefined
+            ? data.wind.gust + " m/s"
+            : "N/A";
+      });
     }
 
-    btn.addEventListener("click", () => {
-      const city = select.value;
+    btn.addEventListener("click", function() {
+      var city = select.value;
 
       if (!city) {
         return;
