@@ -6,6 +6,82 @@
   <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ Bank Account Management Program</title>
   <link rel="stylesheet" href="styles/default.css">
   <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+  <style>
+    .bank-wrap {
+      max-width: 900px;
+      margin: 1.5rem auto 0;
+      background-color: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+    }
+
+    .bank-wrap h3 {
+      margin-top: 0;
+      color: #d63384;
+      text-align: center;
+    }
+
+    .bank-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .bank-controls input {
+      flex: 1 1 220px;
+      padding: 0.85rem;
+      border: 2px solid #d9d9d9;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    .bank-controls button,
+    .bank-actions button {
+      border: none;
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      background-color: #f7d6e6;
+      color: #17324d;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .bank-controls button:hover,
+    .bank-actions button:hover {
+      background-color: #f2bfd7;
+    }
+
+    .bank-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    #bank-message,
+    #balance-output,
+    #deposits-output,
+    #withdrawals-output,
+    #transactions-output {
+      background-color: #f8f9fa;
+      border: 2px solid #e1e1e1;
+      border-radius: 14px;
+      padding: 1rem;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .bank-note {
+      margin-top: 1rem;
+      color: #444;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -13,9 +89,167 @@
 
   <main>
     <h2>Bank Account Management Program</h2>
+
+    <div class="bank-wrap">
+      <h3>Jolly Dolphin Savings Desk</h3>
+
+      <div class="bank-controls">
+        <input id="amount-input" type="number" step="any" placeholder="Enter amount">
+        <button id="deposit-btn" type="button">Deposit</button>
+        <button id="withdraw-btn" type="button">Withdraw</button>
+      </div>
+
+      <div class="bank-actions">
+        <button id="check-balance-btn" type="button">Check Balance</button>
+        <button id="show-deposits-btn" type="button">Show Deposits</button>
+        <button id="show-withdrawals-btn" type="button">Show Withdrawals</button>
+        <button id="show-transactions-btn" type="button">Show All Transactions</button>
+      </div>
+
+      <div id="bank-message">Welcome to the Jolly Dolphin account manager.</div>
+      <div id="balance-output">Current balance will appear here.</div>
+      <div id="deposits-output">Deposit history will appear here.</div>
+      <div id="withdrawals-output">Withdrawal history will appear here.</div>
+      <div id="transactions-output">All transactions will appear here.</div>
+
+      <p class="bank-note">
+        This page tracks deposits and withdrawals using a class and a transactions array.
+      </p>
+    </div>
   </main>
 
   <div data-include="components/footer.html"></div>
+
+  <script>
+    class BankAccount {
+      constructor() {
+        this.balance = 0;
+        this.transactions = [];
+      }
+
+      deposit(amount) {
+        if (amount <= 0) {
+          return "Deposit amount must be greater than zero.";
+        }
+
+        this.transactions.push({
+          type: "deposit",
+          amount: amount
+        });
+
+        this.balance += amount;
+        return `Successfully deposited $${amount}. New balance: $${this.balance}`;
+      }
+
+      withdraw(amount) {
+        if (amount <= 0 || amount > this.balance) {
+          return "Insufficient balance or invalid amount.";
+        }
+
+        this.transactions.push({
+          type: "withdraw",
+          amount: amount
+        });
+
+        this.balance -= amount;
+        return `Successfully withdrew $${amount}. New balance: $${this.balance}`;
+      }
+
+      checkBalance() {
+        return `Current balance: $${this.balance}`;
+      }
+
+      listAllDeposits() {
+        const deposits = this.transactions
+          .filter(transaction => transaction.type === "deposit")
+          .map(transaction => transaction.amount);
+
+        return `Deposits: ${deposits.join(",")}`;
+      }
+
+      listAllWithdrawals() {
+        const withdrawals = this.transactions
+          .filter(transaction => transaction.type === "withdraw")
+          .map(transaction => transaction.amount);
+
+        return `Withdrawals: ${withdrawals.join(",")}`;
+      }
+    }
+
+    const myAccount = new BankAccount();
+
+    myAccount.deposit(200);
+    myAccount.deposit(150);
+    myAccount.withdraw(50);
+    myAccount.deposit(75);
+    myAccount.withdraw(25);
+
+    const amountInput = document.getElementById("amount-input");
+    const depositBtn = document.getElementById("deposit-btn");
+    const withdrawBtn = document.getElementById("withdraw-btn");
+    const checkBalanceBtn = document.getElementById("check-balance-btn");
+    const showDepositsBtn = document.getElementById("show-deposits-btn");
+    const showWithdrawalsBtn = document.getElementById("show-withdrawals-btn");
+    const showTransactionsBtn = document.getElementById("show-transactions-btn");
+
+    const bankMessage = document.getElementById("bank-message");
+    const balanceOutput = document.getElementById("balance-output");
+    const depositsOutput = document.getElementById("deposits-output");
+    const withdrawalsOutput = document.getElementById("withdrawals-output");
+    const transactionsOutput = document.getElementById("transactions-output");
+
+    function refreshDisplays() {
+      balanceOutput.textContent = myAccount.checkBalance();
+      depositsOutput.textContent = myAccount.listAllDeposits();
+      withdrawalsOutput.textContent = myAccount.listAllWithdrawals();
+
+      if (myAccount.transactions.length === 0) {
+        transactionsOutput.textContent = "No transactions yet.";
+        return;
+      }
+
+      const transactionLines = myAccount.transactions.map((transaction, index) => {
+        return `${index + 1}. ${transaction.type}: $${transaction.amount}`;
+      });
+
+      transactionsOutput.textContent = `Transactions:\n${transactionLines.join("\n")}`;
+    }
+
+    depositBtn.addEventListener("click", () => {
+      const amount = Number(amountInput.value);
+      const result = myAccount.deposit(amount);
+      bankMessage.textContent = result;
+      amountInput.value = "";
+      refreshDisplays();
+    });
+
+    withdrawBtn.addEventListener("click", () => {
+      const amount = Number(amountInput.value);
+      const result = myAccount.withdraw(amount);
+      bankMessage.textContent = result;
+      amountInput.value = "";
+      refreshDisplays();
+    });
+
+    checkBalanceBtn.addEventListener("click", () => {
+      balanceOutput.textContent = myAccount.checkBalance();
+      bankMessage.textContent = "Balance updated.";
+    });
+
+    showDepositsBtn.addEventListener("click", () => {
+      depositsOutput.textContent = myAccount.listAllDeposits();
+      bankMessage.textContent = "Deposit list updated.";
+    });
+
+    showWithdrawalsBtn.addEventListener("click", () => {
+      withdrawalsOutput.textContent = myAccount.listAllWithdrawals();
+      bankMessage.textContent = "Withdrawal list updated.";
+    });
+
+    showTransactionsBtn.addEventListener("click", refreshDisplays);
+
+    refreshDisplays();
+  </script>
 
   <script src="scripts/HTMLInclude.min.js"></script>
 </body>
