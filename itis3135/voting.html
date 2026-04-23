@@ -6,6 +6,82 @@
   <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ Voting System</title>
   <link rel="stylesheet" href="styles/default.css">
   <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+  <style>
+    .vote-wrap {
+      max-width: 900px;
+      margin: 1.5rem auto 0;
+      background-color: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+    }
+
+    .vote-wrap h3 {
+      margin-top: 0;
+      color: #d63384;
+      text-align: center;
+    }
+
+    .vote-controls,
+    .vote-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .vote-controls input,
+    .vote-controls select {
+      padding: 0.8rem;
+      border: 2px solid #d9d9d9;
+      border-radius: 12px;
+      font-size: 1rem;
+      flex: 1 1 220px;
+    }
+
+    .vote-actions button,
+    .option-list button {
+      border: none;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      background-color: #f7d6e6;
+      color: #17324d;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .vote-actions button:hover,
+    .option-list button:hover {
+      background-color: #f2bfd7;
+    }
+
+    #message,
+    #results-output,
+    #log-output {
+      background-color: #f8f9fa;
+      border: 2px solid #e1e1e1;
+      border-radius: 14px;
+      padding: 1rem;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .option-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .vote-note {
+      margin-top: 1rem;
+      color: #444;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -13,9 +89,189 @@
 
   <main>
     <h2>Voting System</h2>
+
+    <div class="vote-wrap">
+      <h3>Jolly Dolphin Club Poll</h3>
+
+      <div class="vote-controls">
+        <input id="new-option" type="text" placeholder="Add a poll option">
+        <button id="add-option-btn" type="button">Add Option</button>
+      </div>
+
+      <div class="vote-controls">
+        <select id="vote-option">
+          <option value="">Select an option</option>
+        </select>
+        <input id="voter-id" type="text" placeholder="Enter voter ID">
+        <button id="vote-btn" type="button">Vote</button>
+      </div>
+
+      <div class="vote-actions">
+        <button id="show-results-btn" type="button">Show Results</button>
+        <button id="show-debugs-btn" type="button">Show Activity Log</button>
+      </div>
+
+      <div class="option-list" id="quick-vote-list"></div>
+
+      <div id="message">Ready to manage the poll.</div>
+      <div id="results-output">Poll Results will appear here.</div>
+      <div id="log-output">Activity log will appear here.</div>
+
+      <p class="vote-note">
+        This page uses a Map for options and a Set for voters so duplicate votes are prevented.
+      </p>
+    </div>
   </main>
 
   <div data-include="components/footer.html"></div>
+
+  <script>
+    const poll = new Map();
+    const activityLog = [];
+
+    function addOption(option) {
+      if (!option || option.trim() === "") {
+        return "Option cannot be empty.";
+      }
+
+      if (poll.has(option)) {
+        return `Option "${option}" already exists.`;
+      }
+
+      poll.set(option, new Set());
+      return `Option "${option}" added to the poll.`;
+    }
+
+    function vote(option, voterId) {
+      if (!poll.has(option)) {
+        return `Option "${option}" does not exist.`;
+      }
+
+      const voters = poll.get(option);
+
+      if (voters.has(voterId)) {
+        return `Voter ${voterId} has already voted for "${option}".`;
+      }
+
+      voters.add(voterId);
+      return `Voter ${voterId} voted for "${option}".`;
+    }
+
+    function displayResults() {
+      let results = "Poll Results:\n";
+
+      for (const [option, voters] of poll) {
+        results += `${option}: ${voters.size} votes\n`;
+      }
+
+      return results.trim();
+    }
+
+    const optionInput = document.getElementById("new-option");
+    const addOptionBtn = document.getElementById("add-option-btn");
+    const voteSelect = document.getElementById("vote-option");
+    const voterIdInput = document.getElementById("voter-id");
+    const voteBtn = document.getElementById("vote-btn");
+    const showResultsBtn = document.getElementById("show-results-btn");
+    const showDebugsBtn = document.getElementById("show-debugs-btn");
+    const quickVoteList = document.getElementById("quick-vote-list");
+    const messageBox = document.getElementById("message");
+    const resultsOutput = document.getElementById("results-output");
+    const logOutput = document.getElementById("log-output");
+
+    function updateOptionUI() {
+      voteSelect.innerHTML = '<option value="">Select an option</option>';
+      quickVoteList.innerHTML = "";
+
+      for (const [option] of poll) {
+        const optionElement = document.createElement("option");
+        optionElement.value = option;
+        optionElement.textContent = option;
+        voteSelect.appendChild(optionElement);
+
+        const quickBtn = document.createElement("button");
+        quickBtn.type = "button";
+        quickBtn.textContent = option;
+        quickBtn.addEventListener("click", () => {
+          voteSelect.value = option;
+          messageBox.textContent = `Selected "${option}" for voting.`;
+        });
+
+        quickVoteList.appendChild(quickBtn);
+      }
+    }
+
+    function logAction(text) {
+      activityLog.push(text);
+    }
+
+    addOptionBtn.addEventListener("click", () => {
+      const option = optionInput.value.trim();
+      const result = addOption(option);
+
+      messageBox.textContent = result;
+      logAction(result);
+
+      if (result.includes("added to the poll.")) {
+        optionInput.value = "";
+        updateOptionUI();
+      }
+    });
+
+    voteBtn.addEventListener("click", () => {
+      const option = voteSelect.value;
+      const voterId = voterIdInput.value.trim();
+
+      if (!option) {
+        messageBox.textContent = "Please select an option first.";
+        return;
+      }
+
+      if (!voterId) {
+        messageBox.textContent = "Please enter a voter ID.";
+        return;
+      }
+
+      const result = vote(option, voterId);
+      messageBox.textContent = result;
+      logAction(result);
+      voterIdInput.value = "";
+    });
+
+    showResultsBtn.addEventListener("click", () => {
+      resultsOutput.textContent = displayResults();
+    });
+
+    showDebugsBtn.addEventListener("click", () => {
+      logOutput.textContent = activityLog.length > 0
+        ? activityLog.join("\n")
+        : "No activity yet.";
+    });
+
+    addOption("Turkey");
+    addOption("Morocco");
+    addOption("Spain");
+    addOption("Malaysia");
+    addOption("Algeria");
+
+    vote("Turkey", "traveler1");
+    vote("Turkey", "traveler2");
+    vote("Morocco", "traveler3");
+    vote("Algeria", "traveler1");
+
+    activityLog.push('Option "Turkey" added to the poll.');
+    activityLog.push('Option "Morocco" added to the poll.');
+    activityLog.push('Option "Spain" added to the poll.');
+    activityLog.push('Option "Malaysia" added to the poll.');
+    activityLog.push('Option "Algeria" added to the poll.');
+    activityLog.push('Voter traveler1 voted for "Turkey".');
+    activityLog.push('Voter traveler2 voted for "Turkey".');
+    activityLog.push('Voter traveler3 voted for "Morocco".');
+    activityLog.push('Voter traveler1 voted for "Algeria".');
+
+    updateOptionUI();
+    resultsOutput.textContent = displayResults();
+  </script>
 
   <script src="scripts/HTMLInclude.min.js"></script>
 </body>
