@@ -2,10 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cards</title>
+  <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ Cards</title>
 
   <link rel="stylesheet" href="styles/default.css">
   <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+
+  <style>
+    #playing-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      width: 180px;
+      height: 260px;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px;
+      border: 2px solid #111;
+      border-radius: 12px;
+      background: #fff;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+    }
+
+    .left {
+      align-self: flex-start;
+    }
+
+    .middle {
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      font-size: 34px;
+    }
+
+    .right {
+      align-self: flex-end;
+      transform: rotate(180deg);
+    }
+  </style>
 </head>
 
 <body>
@@ -13,7 +55,56 @@
   <div data-include="components/header.html"></div>
 
   <main>
-    <h2>Cards</h2>
+    <h2>Jolly Dolphin Cards</h2>
+
+    <p>
+      These cards are part of my Jolly Dolphin theme. Each card represents a fun
+      ocean-inspired idea connected to creativity and learning in my course website.
+    </p>
+
+    <section id="playing-cards">
+
+      <div class="card">
+        <div class="left">A♠</div>
+        <div class="middle">
+          <div>♠</div>
+          <div>♠</div>
+          <div>♠</div>
+        </div>
+        <div class="right">A♠</div>
+      </div>
+
+      <div class="card">
+        <div class="left">K♥</div>
+        <div class="middle">
+          <div>♥</div>
+          <div>♥</div>
+          <div>♥</div>
+        </div>
+        <div class="right">K♥</div>
+      </div>
+
+      <div class="card">
+        <div class="left">7♦</div>
+        <div class="middle">
+          <div>♦</div>
+          <div>♦</div>
+          <div>♦</div>
+        </div>
+        <div class="right">7♦</div>
+      </div>
+
+      <div class="card">
+        <div class="left">J♣</div>
+        <div class="middle">
+          <div>♣</div>
+          <div>♣</div>
+          <div>♣</div>
+        </div>
+        <div class="right">J♣</div>
+      </div>
+
+    </section>
   </main>
 
   <div data-include="components/footer.html"></div>
