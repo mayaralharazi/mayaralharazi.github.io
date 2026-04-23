@@ -14,6 +14,8 @@
       flex-wrap: wrap;
       gap: 20px;
       padding: 20px;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     .card {
@@ -28,6 +30,7 @@
       box-sizing: border-box;
       font-family: Arial, sans-serif;
       font-size: 22px;
+      position: relative;
     }
 
     .left {
@@ -47,6 +50,13 @@
       align-self: flex-end;
       transform: rotate(180deg);
     }
+
+    .card-title {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      font-size: 12px;
+    }
   </style>
 </head>
 
@@ -58,51 +68,67 @@
     <h2>Jolly Dolphin Cards</h2>
 
     <p>
-      These cards are part of my Jolly Dolphin theme. Each card represents a fun
-      ocean-inspired idea connected to creativity and learning in my course website.
+      These cards are part of my Jolly Dolphin theme. Each card represents a role
+      in an ocean-inspired world where dolphins help with coding, creativity, and security.
     </p>
 
     <section id="playing-cards">
 
+      <!-- Card 1 -->
       <div class="card">
         <div class="left">A♠</div>
+
         <div class="middle">
-          <div>♠</div>
-          <div>♠</div>
-          <div>♠</div>
+          <div>🌊</div>
+          <div>🌊</div>
+          <div>🌊</div>
         </div>
+
         <div class="right">A♠</div>
+        <p class="card-title">Wave Master</p>
       </div>
 
+      <!-- Card 2 -->
       <div class="card">
         <div class="left">K♥</div>
+
         <div class="middle">
-          <div>♥</div>
-          <div>♥</div>
-          <div>♥</div>
+          <div>🐬</div>
+          <div>🐬</div>
+          <div>🐬</div>
         </div>
+
         <div class="right">K♥</div>
+        <p class="card-title">Dolphin Leader</p>
       </div>
 
+      <!-- Card 3 -->
       <div class="card">
         <div class="left">7♦</div>
+
         <div class="middle">
-          <div>♦</div>
-          <div>♦</div>
-          <div>♦</div>
+          <div>🐚</div>
+          <div>🐚</div>
+          <div>🐚</div>
         </div>
+
         <div class="right">7♦</div>
+        <p class="card-title">Ocean Treasure</p>
       </div>
 
+      <!-- Card 4 -->
       <div class="card">
-        <div class="left">J♣</div>
-        <div class="middle">
-          <div>♣</div>
-          <div>♣</div>
-          <div>♣</div>
-        </div>
-        <div class="right">J♣</div>
-      </div>
+  <div class="left">J♣</div>
+
+  <div class="middle">
+    <div>🦀</div>
+    <div>🦀</div>
+    <div>🦀</div>
+  </div>
+
+  <div class="right">J♣</div>
+  <p class="card-title">Sea Defender</p>
+</div>
 
     </section>
   </main>
