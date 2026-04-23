@@ -12,6 +12,9 @@
       grid-template-columns: 1fr;
       gap: 1.5rem;
       margin-top: 1.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .converter-box {
@@ -36,9 +39,12 @@
       font-family: Arial, sans-serif;
       resize: vertical;
       box-sizing: border-box;
+      background-color: #f8f9fa;
+      color: #17324d;
     }
 
-    #html-output {
+    #html-output,
+    #preview {
       white-space: pre-wrap;
       word-wrap: break-word;
       background-color: #f8f9fa;
@@ -46,14 +52,7 @@
       border-radius: 12px;
       padding: 1rem;
       min-height: 180px;
-    }
-
-    #preview {
-      background-color: #f8f9fa;
-      border: 2px solid #d9d9d9;
-      border-radius: 12px;
-      padding: 1rem;
-      min-height: 180px;
+      color: #17324d;
     }
 
     #preview img {
@@ -66,7 +65,7 @@
       margin: 0.75rem 0;
       padding-left: 1rem;
       border-left: 4px solid #d63384;
-      color: #333;
+      color: #333333;
     }
   </style>
 </head>
@@ -80,7 +79,14 @@
     <div class="converter-wrap">
       <section class="converter-box">
         <h3>Markdown Input</h3>
-        <textarea id="markdown-input" placeholder="# Jolly Dolphin Notes&#10;## Club Update&#10;### Study Session&#10;**Bold text**&#10;*Italic text*&#10;![dolphin](https://picsum.photos/300/180)&#10;[Club Link](https://www.freecodecamp.org)&#10;> Keep swimming and studying"></textarea>
+        <textarea id="markdown-input"># Jolly Dolphin Notes
+## Club Update
+### Study Session
+**Bold text**
+*Italic text*
+![dolphin](https://picsum.photos/300/180)
+[Club Link](https://www.freecodecamp.org)
+> Keep swimming and studying</textarea>
       </section>
 
       <section class="converter-box">
@@ -139,15 +145,14 @@
       return html;
     }
 
-    markdownInput.addEventListener("input", function () {
+    function updateConverter() {
       const converted = convertMarkdown();
       htmlOutput.textContent = converted;
       preview.innerHTML = converted;
-    });
+    }
 
-    window.addEventListener("load", function () {
-      markdownInput.dispatchEvent(new Event("input"));
-    });
+    markdownInput.addEventListener("input", updateConverter);
+    updateConverter();
   </script>
 
   <script src="scripts/HTMLInclude.min.js"></script>
