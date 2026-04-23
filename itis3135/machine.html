@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mayar Alharazi's Jolly Dolphin ~ ITIS 3135 ~ Drum Machine</title>
+
   <link rel="stylesheet" href="styles/default.css">
   <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+
   <style>
     .drum-machine-wrap {
       max-width: 900px;
@@ -19,10 +21,6 @@
     .drum-intro {
       text-align: center;
       margin-bottom: 1.5rem;
-    }
-
-    .drum-intro p {
-      margin: 0.5rem 0 0;
     }
 
     #drum-machine {
@@ -47,19 +45,12 @@
       font-size: 1.4rem;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-      transition: transform 0.08s ease, background-color 0.2s ease;
-    }
-
-    .drum-pad:hover {
-      background-color: #f2bfd7;
     }
 
     .drum-pad:active,
-    .drum-pad.active-pad {
-      transform: scale(0.97);
+    .active-pad {
       background-color: #e78ab8;
-      color: #ffffff;
+      color: white;
     }
 
     .drum-display-box {
@@ -70,144 +61,120 @@
       text-align: center;
     }
 
-    .drum-display-box h3 {
-      margin-top: 0;
-      color: #d63384;
-    }
-
     #display {
-      min-height: 48px;
-      margin: 0;
-      padding: 0.9rem;
-      border-radius: 12px;
-      background-color: #ffffff;
-      border: 2px solid #d9d9d9;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .drum-note {
-      margin-top: 1rem;
-      font-size: 0.95rem;
-      color: #444;
-    }
-
-    @media (max-width: 700px) {
-      #drum-machine {
-        grid-template-columns: 1fr;
-      }
+      padding: 1rem;
+      background: white;
+      border-radius: 10px;
+      border: 2px solid #ccc;
     }
   </style>
 </head>
 
 <body>
-  <div data-include="components/header.html"></div>
 
-  <main>
-    <h2>Drum Machine</h2>
+<div data-include="components/header.html"></div>
 
-    <div class="drum-machine-wrap">
-      <div class="drum-intro">
-        <h3>Jolly Dolphin Beat Board</h3>
-        <p>Click a pad or use your keyboard keys Q, W, E, A, S, D, Z, X, and C.</p>
-      </div>
+<main>
+  <h2>Drum Machine</h2>
 
-      <div id="drum-machine">
-        <div id="pad-bank">
-          <button class="drum-pad" id="Heater 1" type="button">
-            Q
-            <audio class="clip" id="Q" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-1.mp3"></audio>
-          </button>
+  <div class="drum-machine-wrap">
 
-          <button class="drum-pad" id="Heater 2" type="button">
-            W
-            <audio class="clip" id="W" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-2.mp3"></audio>
-          </button>
-
-          <button class="drum-pad" id="Heater 3" type="button">
-            E
-            <audio class="clip" id="E" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-3.mp3"></audio>
-          </button>
-
-          <button class="drum-pad" id="Heater 4" type="button">
-            A
-            <audio class="clip" id="A" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-4_1.mp3"></audio>
-          </button>
-
-          <button class="drum-pad" id="Clap" type="button">
-            S
-            <audio class="clip" id="S" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-6.mp3"></audio>
-          </button>
-
-          <button class="drum-pad" id="Open-HH" type="button">
-            D
-            <audio class="clip" id="D" src="https://cdn.freecodecamp.org/curriculum/drum/Dsc_Oh.mp3"></audio>
-          </button>
-
-          <button class="drum-pad" id="Kick-n'-Hat" type="button">
-            Z
-            <audio class="clip" id="Z" src="https://cdn.freecodecamp.org/curriculum/drum/Kick_n_Hat.mp3"></audio>
-          </button>
-
-          <button class="drum-pad" id="Kick" type="button">
-            X
-            <audio class="clip" id="X" src="https://cdn.freecodecamp.org/curriculum/drum/RP4_KICK_1.mp3"></audio>
-          </button>
-
-          <button class="drum-pad" id="Closed-HH" type="button">
-            C
-            <audio class="clip" id="C" src="https://cdn.freecodecamp.org/curriculum/drum/Cev_H2.mp3"></audio>
-          </button>
-        </div>
-
-        <div class="drum-display-box">
-          <h3>Now Playing</h3>
-          <p id="display">Press a pad</p>
-          <p class="drum-note">This page follows the FCC drum machine project and fits the Jolly Dolphin theme.</p>
-        </div>
-      </div>
+    <div class="drum-intro">
+      <h3>Jolly Dolphin Beat Board</h3>
+      <p>Click or press Q W E A S D Z X C</p>
     </div>
-  </main>
 
-  <div data-include="components/footer.html"></div>
+    <div id="drum-machine">
 
-  <script>
-    const display = document.getElementById("display");
-    const drumPads = document.querySelectorAll(".drum-pad");
+      <!-- Pads -->
+      <div id="pad-bank">
 
-    function playSound(key) {
-      const upperKey = key.toUpperCase();
-      const audio = document.getElementById(upperKey);
+        <button class="drum-pad" id="Heater1">
+          Q
+          <audio class="clip" id="Q" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-1.mp3"></audio>
+        </button>
 
-      if (!audio) {
-        return;
-      }
+        <button class="drum-pad" id="Heater2">
+          W
+          <audio class="clip" id="W" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-2.mp3"></audio>
+        </button>
 
-      const pad = audio.parentElement;
+        <button class="drum-pad" id="Heater3">
+          E
+          <audio class="clip" id="E" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-3.mp3"></audio>
+        </button>
 
-      audio.currentTime = 0;
-      audio.play();
+        <button class="drum-pad" id="Heater4">
+          A
+          <audio class="clip" id="A" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-4_1.mp3"></audio>
+        </button>
 
-      display.innerText = pad.id;
+        <button class="drum-pad" id="Clap">
+          S
+          <audio class="clip" id="S" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-6.mp3"></audio>
+        </button>
 
-      pad.classList.add("active-pad");
-      setTimeout(() => {
-        pad.classList.remove("active-pad");
-      }, 120);
-    }
+        <button class="drum-pad" id="OpenHH">
+          D
+          <audio class="clip" id="D" src="https://cdn.freecodecamp.org/curriculum/drum/Dsc_Oh.mp3"></audio>
+        </button>
 
-    drumPads.forEach((pad) => {
-      pad.addEventListener("click", () => {
-        const key = pad.textContent.trim();
-        playSound(key);
-      });
-    });
+        <button class="drum-pad" id="KickHat">
+          Z
+          <audio class="clip" id="Z" src="https://cdn.freecodecamp.org/curriculum/drum/Kick_n_Hat.mp3"></audio>
+        </button>
 
-    document.addEventListener("keydown", (event) => {
-      playSound(event.key);
-    });
-  </script>
+        <button class="drum-pad" id="Kick">
+          X
+          <audio class="clip" id="X" src="https://cdn.freecodecamp.org/curriculum/drum/RP4_KICK_1.mp3"></audio>
+        </button>
 
-  <script src="scripts/HTMLInclude.min.js"></script>
+        <button class="drum-pad" id="ClosedHH">
+          C
+          <audio class="clip" id="C" src="https://cdn.freecodecamp.org/curriculum/drum/Cev_H2.mp3"></audio>
+        </button>
+
+      </div>
+
+      <!-- Display -->
+      <div class="drum-display-box">
+        <h3>Now Playing</h3>
+        <p id="display">Press a pad</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<div data-include="components/footer.html"></div>
+
+<script>
+const display = document.getElementById("display");
+
+function playSound(key) {
+  const audio = document.getElementById(key.toUpperCase());
+  if (!audio) return;
+
+  audio.currentTime = 0;
+  audio.play();
+
+  display.textContent = audio.parentElement.id;
+}
+
+document.querySelectorAll(".drum-pad").forEach(pad => {
+  pad.addEventListener("click", () => {
+    playSound(pad.textContent.trim());
+  });
+});
+
+document.addEventListener("keydown", e => {
+  playSound(e.key);
+});
+</script>
+
+<script src="scripts/HTMLInclude.min.js"></script>
+
 </body>
 </html>
