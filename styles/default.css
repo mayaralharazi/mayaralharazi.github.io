@@ -76,3 +76,13 @@ header a {
 header a:hover {
   color: #ffffff;
 }
+header nav a,
+header nav a:link,
+header nav a:visited {
+  color: #f5e6c8 !important;
+  text-decoration: none;
+}
+
+header nav a:hover {
+  color: #ffffff !important;
+}
