@@ -67,3 +67,12 @@ a:visited {
 a:hover {
   color: #3d1f73;
 }
+header a {
+  color: #f5e6c8;   /* light beige like GitHub */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header a:hover {
+  color: #ffffff;
+}
