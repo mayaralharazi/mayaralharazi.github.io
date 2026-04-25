@@ -70,7 +70,7 @@ a:hover {
 header a {
   color: #f5e6c8;   /* light beige like GitHub */
   text-decoration: none;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 header a:hover {
