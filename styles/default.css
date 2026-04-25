@@ -48,3 +48,11 @@ body {
     padding: 15px;
     font-size: 0.9em;
   }
+a {
+  color: #5a2ca0;   /* same purple */
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #3d1f73;
+}
