@@ -56,3 +56,14 @@ a {
 a:hover {
   color: #3d1f73;
 }
+a:link {
+  color: #5a2ca0;
+}
+
+a:visited {
+  color: #5a2ca0;
+}
+
+a:hover {
+  color: #3d1f73;
+}
