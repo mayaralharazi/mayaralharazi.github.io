@@ -10,18 +10,7 @@
 
 <body>
 
-  <header>
-    <h1>CodeStart</h1>
-    <p>A Beginner Guide to JavaScript and CSS</p>
-
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="about.html">About</a> |
-      <a href="lessons.html">Lessons</a> |
-      <a href="practice.html">Practice</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <div data-include="components/header.html"></div>
 
   <main>
 
@@ -53,18 +42,14 @@
       </p>
 
       <h3>Variables</h3>
-      <p>
-        Variables are used to store information that can be used later in a program.
-      </p>
+      <p>Variables are used to store information that can be used later in a program.</p>
       <pre>
 let name = "Mayar";
 let level = "Beginner";
       </pre>
 
       <h3>Functions</h3>
-      <p>
-        Functions let you group code together so you can reuse it when needed.
-      </p>
+      <p>Functions let you group code together so you can reuse it when needed.</p>
       <pre>
 function greetUser() {
   console.log("Welcome to CodeStart!");
@@ -74,9 +59,7 @@ greetUser();
       </pre>
 
       <h3>Events</h3>
-      <p>
-        JavaScript can respond to user actions such as clicking a button, hovering over an item, or submitting a form.
-      </p>
+      <p>JavaScript can respond to user actions such as clicking a button.</p>
       <pre>
 document.querySelector("button").addEventListener("click", function () {
   alert("Button clicked!");
@@ -85,22 +68,15 @@ document.querySelector("button").addEventListener("click", function () {
 
       <div class="lesson-tip">
         <h3>Why It Matters</h3>
-        <p>
-          JavaScript brings websites to life by allowing pages to react to users and update content without being static.
-        </p>
+        <p>JavaScript brings websites to life by allowing pages to react to users.</p>
       </div>
     </section>
 
     <section class="lesson-card" data-category="css">
       <h2>CSS Basics</h2>
-      <p>
-        CSS is used to style the appearance of a website. It controls colors, spacing, fonts, and layout.
-      </p>
+      <p>CSS is used to style the appearance of a website.</p>
 
       <h3>Colors</h3>
-      <p>
-        CSS allows you to set background colors, text colors, and borders to improve design and readability.
-      </p>
       <pre>
 body {
   background-color: lightblue;
@@ -109,9 +85,6 @@ body {
       </pre>
 
       <h3>Text Styling</h3>
-      <p>
-        You can style text by changing the font, size, alignment, and weight to make a page easier to read.
-      </p>
       <pre>
 h1 {
   font-size: 2em;
@@ -120,9 +93,6 @@ h1 {
       </pre>
 
       <h3>Layout</h3>
-      <p>
-        CSS helps organize content using layout tools such as flexbox and grid to create neat and structured pages.
-      </p>
       <pre>
 .container {
   display: flex;
@@ -132,34 +102,27 @@ h1 {
 
       <div class="lesson-tip">
         <h3>Why It Matters</h3>
-        <p>
-          CSS improves the user experience by making a website visually clear, attractive, and easier to navigate.
-        </p>
+        <p>CSS improves the user experience and design of a website.</p>
       </div>
     </section>
 
     <section>
       <h2>Learning in Action</h2>
       <p>
-        Both JavaScript and CSS work together to create websites that are useful, interactive, and visually appealing.
+        Both JavaScript and CSS work together to create websites that are useful and interactive.
       </p>
       <img src="../images/lessons.jpg" alt="JavaScript and CSS lessons" width="400">
     </section>
 
   </main>
 
-<footer>
-  <p>© 2026 CodeStart | Designed by Mayar Alharazi</p>
+  <div data-include="components/footer.html"></div>
 
-  <p>
-    <a href="https://validator.w3.org/" target="_blank">HTML Validator</a> |
-    <a href="https://jigsaw.w3.org/css-validator/" target="_blank">CSS Validator</a> |
-    <a href="https://wave.webaim.org/report#/https://webpages.charlotte.edu/malharaz/itis3135/project/index.html" target="_blank">WCAG Validator</a>
-  </p>
-</footer>
-
-  <script src="scripts/lessons.js"></script>
   <button id="topBtn" title="Go to top">↑</button>
+
+  <script src="../scripts/HTMLInclude.min.js"></script>
+  <script src="scripts/lessons.js"></script>
   <script src="scripts/top.js"></script>
+
 </body>
 </html>
