@@ -396,3 +396,20 @@ nav a::after {
 nav a:hover::after {
   width: 100%;
 }
+.feature-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
