@@ -333,3 +333,66 @@ footer a:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+
+
+
+.info-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+/* Delay for nicer stagger effect */
+.info-card:nth-of-type(2) { animation-delay: 0.1s; }
+.info-card:nth-of-type(3) { animation-delay: 0.2s; }
+.info-card:nth-of-type(4) { animation-delay: 0.3s; }
+
+/* Animation keyframe */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Advanced hover effect */
+.info-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+/* Button interaction polish */
+button,
+.filter-btn,
+#checkAnswersBtn,
+#sendBtn {
+  transition: all 0.25s ease;
+}
+
+button:hover,
+.filter-btn:hover,
+#checkAnswersBtn:hover,
+#sendBtn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+/* Navigation underline animation */
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
