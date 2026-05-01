@@ -26,12 +26,21 @@ function runCode() {
   const code = document.getElementById("codeInput").value;
   const outputBox = document.getElementById("outputBox");
 
+  let output = "";
+
+  const originalLog = console.log;
+  console.log = function(message) {
+    output += message + "\n";
+  };
+
   try {
-    let result = eval(code);
-    outputBox.textContent = result !== undefined ? result : "Code executed.";
+    eval(code);
+    outputBox.textContent = output || "Code executed.";
   } catch (error) {
     outputBox.textContent = "Error: " + error.message;
   }
+
+  console.log = originalLog;
 }
 
 // CONNECT BUTTON
