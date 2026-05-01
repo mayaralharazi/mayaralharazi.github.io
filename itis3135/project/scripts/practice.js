@@ -21,3 +21,19 @@ checkAnswersBtn.addEventListener("click", function () {
   quizResult.textContent = `You got ${score} out of 3 correct!`;
   quizResult.style.color = "#1e3a8a";
 });
+
+function runCode() {
+  const code = document.getElementById("codeInput").value;
+  const outputBox = document.getElementById("outputBox");
+
+  try {
+    let result = eval(code);
+    outputBox.textContent = result !== undefined ? result : "Code executed.";
+  } catch (error) {
+    outputBox.textContent = "Error: " + error.message;
+  }
+}
+
+// CONNECT BUTTON
+const runBtn = document.getElementById("runCodeBtn");
+runBtn.addEventListener("click", runCode);
