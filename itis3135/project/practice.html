@@ -30,7 +30,7 @@
       <h2>Active Learning & Feedback</h2>
       <p>
         The practice section is designed to support active learning. Instead of only reading information,
-        users interact with the page by choosing answers, checking their score, and receiving immediate feedback.
+        users interact with the page by choosing answers, checking their score, writing code, and receiving immediate feedback.
       </p>
       <p>
         This feedback helps beginners identify strengths and weaknesses quickly, which makes the learning process more useful and focused.
@@ -92,12 +92,42 @@ sayHello();
       </div>
     </section>
 
+    <section class="practice-task">
+      <h2>Try Your Own Code</h2>
+      <p>
+        Use this small coding space to practice JavaScript. Type a simple line of code, click Run Code,
+        and check the output below. This helps users move from reading code to testing it.
+      </p>
+
+      <label for="codeInput"><strong>JavaScript Code:</strong></label>
+      <textarea id="codeInput" rows="7">
+console.log("Hello World");
+      </textarea>
+
+      <button id="runCodeBtn">Run Code</button>
+
+      <h3>Output</h3>
+      <pre id="outputBox">Your output will appear here.</pre>
+
+      <div class="lesson-tip">
+        <h3>Try These Examples</h3>
+        <p>
+          You can test simple JavaScript like:
+        </p>
+        <pre>
+console.log(5 + 3);
+console.log("CodeStart");
+        </pre>
+      </div>
+    </section>
+
     <section class="info-card">
       <h2>How to Improve Your Score</h2>
       <ol>
         <li>Review the JavaScript and CSS lessons before taking the quiz.</li>
         <li>Read each question carefully and connect it to the lesson examples.</li>
         <li>Check your score and notice which concepts need more review.</li>
+        <li>Use the coding space to test small examples and build confidence.</li>
         <li>Return to the lessons page and practice again until the ideas feel clear.</li>
       </ol>
     </section>
