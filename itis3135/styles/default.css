@@ -417,3 +417,52 @@ nav a.active {
   color: white;
   border-bottom: 3px solid white;
 }
+/* Code Practice Box */
+#codeInput {
+  width: 100%;
+  min-height: 180px;
+  box-sizing: border-box;
+  margin-top: 12px;
+  padding: 16px;
+  border: 2px solid #f2c6da;
+  border-radius: 12px;
+  background-color: #f8fbff;
+  color: #102a43;
+  font-family: "Courier New", monospace;
+  font-size: 1em;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+#codeInput:focus {
+  outline: 3px solid #f2c6da;
+  border-color: #db2777;
+}
+
+#runCodeBtn {
+  display: block;
+  margin: 18px auto;
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#runCodeBtn:hover {
+  background-color: #db2777;
+  transform: translateY(-2px);
+}
+
+#outputBox {
+  background-color: #f4f4f4;
+  border-left: 5px solid #e26aa8;
+  border-radius: 10px;
+  padding: 16px;
+  min-height: 50px;
+  font-family: "Courier New", monospace;
+  white-space: pre-wrap;
+}
