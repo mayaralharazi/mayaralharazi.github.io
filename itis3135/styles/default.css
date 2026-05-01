@@ -466,3 +466,9 @@ nav a.active {
   font-family: "Courier New", monospace;
   white-space: pre-wrap;
 }
+.code-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #102a43;
+  font-size: 1.1em;
+}
