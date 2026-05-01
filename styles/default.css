@@ -86,3 +86,11 @@ header nav a:visited {
 header nav a:hover {
   color: #ffffff !important;
 }
+.intro-photo {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 4px solid #e95fad;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+}
