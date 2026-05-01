@@ -472,3 +472,14 @@ nav a.active {
   color: #102a43;
   font-size: 1.1em;
 }
+footer {
+  position: relative;
+  padding: 40px 20px 80px;
+}
+
+.cloud {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  width: 80px;
+}
